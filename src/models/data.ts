@@ -1,4 +1,4 @@
-import {Presentation} from "./types";
+import {Point, Presentation} from "./types";
 
 const pres: Presentation = {
     common_background: 'common_backgr',
@@ -41,11 +41,58 @@ const pres: Presentation = {
                     layer_index: 0,
                     selected: false,
                     rotation: 0
+                },
+                {
+                    id: 'graph11',
+                    type: 'graphic',
+                    layer_index: 2,
+                    rotation: 0,
+                    color: 'red',
+                    data: {
+                        gr_obj_type: 'circle',
+                        center_position: {x: 120, y: 20},
+                        radius: 20
+                    },
                 }
             ]
         },
         {
             id: '1',
+            background: 'blue',
+            transition_style: 'standart',
+            scale: 100,
+            selected_blocks: [],
+            slide_data: [
+                {
+                    id: 'graph21',
+                    type: 'graphic',
+                    layer_index: 2,
+                    rotation: 0,
+                    color: 'green',
+                    data: {
+                        gr_obj_type: 'rectangle',
+                        top_left_position: {x: 20, y: 20},
+                        rect_width: 100,
+                        rect_height: 50
+                    }
+                },
+                {
+                    id: 'graph22',
+                    type: 'graphic',
+                    layer_index: 2,
+                    rotation: 0,
+                    color: 'blue',
+                    data: {
+                        gr_obj_type: 'triangle',
+                        first_point_position: {x: 200, y: 20},
+                        second_point_position: {x: 100, y: 100},
+                        third_point_position: {x: 300, y: 100}
+                    }
+                }
+            ]
+        },
+        {
+            id: '2',
             background: 'blue',
             transition_style: 'standart',
             scale: 100,

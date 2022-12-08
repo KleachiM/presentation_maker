@@ -17,7 +17,7 @@ function SlidesItem(props: SlideProps) {
     }
     else
     {
-        return <div>Empty slide!</div>
+        return <div key={'empty_key'}>Empty slide!</div>
     }
 
 }

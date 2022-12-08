@@ -25,6 +25,61 @@ function ImageBlock(props: BlockProps) {
     </div>
 }
 
+function GraphBlock(props: BlockProps) {
+    if ('data' in props.elem)
+    {
+        if ('gr_obj_type' in props.elem.data)
+        {
+            const gr_type = props.elem.data.gr_obj_type;
+
+            if (gr_type === 'circle')
+            {
+                return (
+                    <svg width={'100%'} height={'100%'}>
+                        <circle cx={props.elem.data.center_position.x}
+                                cy={props.elem.data.center_position.y}
+                                r={props.elem.data.radius}
+                                fill={props.elem.color}
+                        />
+                    </svg>
+                )
+            }
+
+            if (gr_type === 'rectangle')
+            {
+                return (
+                    <svg width={'100%'} height={'100%'}>
+                        <rect x={props.elem.data.top_left_position.x}
+                              y={props.elem.data.top_left_position.y}
+                              width={props.elem.data.rect_width}
+                              height={props.elem.data.rect_height}
+                              fill={props.elem.color}
+                        />
+                    </svg>
+                )
+            }
+
+            if (gr_type === 'triangle')
+            {
+                return (
+                    <svg width={'100%'} height={'100%'}>
+                        <polygon
+                            points={
+                                props.elem.data.first_point_position.x + ', ' + props.elem.data.first_point_position.y + ' ' +
+                                props.elem.data.second_point_position.x + ', ' + props.elem.data.second_point_position.y + ' ' +
+                                props.elem.data.third_point_position.x + ', ' + props.elem.data.third_point_position.y
+                            }
+                            fill={props.elem.color}
+                        />
+                    </svg>
+                )
+            }
+        }
+    }
+
+    return <div>No grahp element</div>
+}
+
 function Block(props: BlockProps) {
     const blockType = props.elem.type;
     if (blockType === 'text')
@@ -37,7 +92,7 @@ function Block(props: BlockProps) {
     }
     if (blockType === 'graphic')
     {
-        return <div>GraphObj</div>
+        return <GraphBlock elem={props.elem}/>
     }
     return null
 }

@@ -45,7 +45,8 @@ type Circle = {
 type Rectangle = {
     gr_obj_type: 'rectangle',
     top_left_position: Point,
-    bottom_right_position: Point
+    rect_width: number,
+    rect_height: number
 }
 
 type Triangle = {
@@ -60,10 +61,11 @@ type GraphObject = {
     type: 'graphic',
     layer_index: number,
     rotation: number,
-    border_width: number,
-    border_color: string,
-    border_radius: number,
-    background_color: string,
+    color: string,
+    // border_width: number,
+    // border_color: string,
+    // border_radius: number,
+    // background_color: string,
     data: Circle|Rectangle|Triangle
 }
 
