@@ -6,8 +6,6 @@ type BlockProps = {
 
 function TextBlock(props: BlockProps) {
     return <div>
-        'type: text'
-        <br/>
         {
             'text_v' in props.elem ? props.elem.text_v : ''
         }
@@ -16,8 +14,6 @@ function TextBlock(props: BlockProps) {
 
 function ImageBlock(props: BlockProps) {
     return <div>
-        'type: image'
-        <br/>
         <img src={
             'source' in props.elem ? props.elem.source : ''
         }
