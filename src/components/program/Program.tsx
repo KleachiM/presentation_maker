@@ -7,9 +7,9 @@ type ProgramProps = {
 }
 
 function Program(props: ProgramProps) {
-    return <div>
+    return <>
         <Slides presentation={props.presentation}/>
-    </div>
+    </>
 }
 
 export {

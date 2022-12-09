@@ -12,13 +12,13 @@ const SlideStyle = {
 }
 
 function Slides(props: SlidesProps) {
-    return <div>
+    return <>
         {props.presentation.data.map(slide => {
-            return <div style={SlideStyle}>
-                <SlidesItem slides_item={slide} key={slide.id}/>
+            return <div style={SlideStyle} key={slide.id}>
+                <SlidesItem slides_item={slide}/>
             </div>
         })}
-    </div>
+    </>
 }
 
 export {Slides}
