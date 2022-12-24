@@ -1,14 +1,14 @@
-type Point = {
+export type Point = {
     x: number,
     y: number
 }
 
-type CropObj = {
+export type CropObj = {
     top_left_point: Point,
     bottom_right_point: Point
 }
 
-type Text = {
+export type Text = {
     id: string,
     type: 'text',
     text_v: string,
@@ -23,7 +23,7 @@ type Text = {
     rotation: number
 }
 
-type Image = {
+export type Image = {
     id: string,
     type: 'image',
     source: string,
@@ -36,27 +36,27 @@ type Image = {
     rotation: number
 }
 
-type Circle = {
+export type Circle = {
     gr_obj_type: 'circle',
     center_position: Point,
     radius: number
 }
 
-type Rectangle = {
+export type Rectangle = {
     gr_obj_type: 'rectangle',
     top_left_position: Point,
     rect_width: number,
     rect_height: number
 }
 
-type Triangle = {
+export type Triangle = {
     gr_obj_type: 'triangle',
     first_point_position: Point,
     second_point_position: Point,
     third_point_position: Point
 }
 
-type GraphObject = {
+export type GraphObject = {
     id: string,
     type: 'graphic',
     layer_index: number,
@@ -69,7 +69,7 @@ type GraphObject = {
     data: Circle|Rectangle|Triangle
 }
 
-type Slide = {
+export type Slide = {
     id: string,
     background: string,
     transition_style: string,
@@ -78,23 +78,12 @@ type Slide = {
     slide_data: Array<Text|Image|GraphObject>
 }
 
-type Presentation = {
+export type Presentation = {
     common_background: string,
     common_transition_style: string,
     display_mode: string,
-    selected_slides: Array<string>,
+    selected_slide: string,
     data: Array<Slide>
 }
 
-type History = Array<Presentation>
-
-export {
-    type Point,
-    type CropObj,
-    type Text,
-    type Image,
-    type GraphObject,
-    type Slide,
-    type Presentation,
-    type History,
-}
+export type History = Array<Presentation>

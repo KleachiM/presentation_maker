@@ -10,6 +10,7 @@ function TextBlock(props: BlockProps) {
             'text_v' in props.elem ? props.elem.text_v : ''
         }
     </div>
+
 }
 
 function ImageBlock(props: BlockProps) {

@@ -1,8 +1,9 @@
 import React from 'react';
 import './App.css';
 import {Presentation} from "./models/types";
-import {Program} from "./components/program/Program";
+import {Miniatures} from "./components/miniatures/Miniatures";
 import {HeaderPanel} from "./components/header_panel/HeaderPanel";
+import {MainSlide} from "./components/mainslide/MainSlide";
 
 type AppProps = {
   presentation: Presentation
@@ -11,10 +12,13 @@ type AppProps = {
 function App(props: AppProps) {
   return (
     <div className="App">
-        <div className="HeaderPanel">
+        <div className="App-header">
             <HeaderPanel/>
         </div>
-      <Program presentation={props.presentation} />
+        <div className="App-body">
+            <Miniatures presentation={props.presentation} />
+            <MainSlide presentation={props.presentation}/>
+        </div>
     </div>
   );
 }

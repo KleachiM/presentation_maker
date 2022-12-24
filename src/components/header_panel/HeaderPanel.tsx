@@ -1,4 +1,9 @@
+import "./HeaderPanel.css"
+
 export function HeaderPanel() {
-    return <>This is header panel!</>
+    return <div className="header-panel">
+        This is header panel!
+        <br/> Сюда надо вставить иконки
+    </div>
 }
 

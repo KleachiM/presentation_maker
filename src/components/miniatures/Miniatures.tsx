@@ -1,17 +1,14 @@
 import {Presentation} from "../../models/types";
 import React from 'react';
 import {Slides} from "../slides/Slides";
+import "./Miniatures.css"
 
 type ProgramProps = {
     presentation: Presentation
 }
 
-function Program(props: ProgramProps) {
-    return <>
+export function Miniatures(props: ProgramProps) {
+    return <div className="miniatures">
         <Slides presentation={props.presentation}/>
-    </>
-}
-
-export {
-    Program
+    </div>
 }

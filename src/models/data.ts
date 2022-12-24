@@ -1,10 +1,10 @@
-import {Point, Presentation} from "./types";
+import {Presentation} from "./types";
 
 const pres: Presentation = {
     common_background: 'common_backgr',
     common_transition_style: 'common_trstyle',
     display_mode: 'presentation',
-    selected_slides: ['1'],
+    selected_slide: '0',
     data: [
         {
             id: '0',
@@ -84,7 +84,7 @@ const pres: Presentation = {
                     color: 'blue',
                     data: {
                         gr_obj_type: 'triangle',
-                        first_point_position: {x: 200, y: 20},
+                        first_point_position: {x: 20, y: 20},
                         second_point_position: {x: 100, y: 100},
                         third_point_position: {x: 300, y: 100}
                     }
