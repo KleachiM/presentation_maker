@@ -45,8 +45,7 @@ export type Circle = {
 export type Rectangle = {
     gr_obj_type: 'rectangle',
     top_left_position: Point,
-    rect_width: number,
-    rect_height: number
+    bottom_right_position: Point
 }
 
 export type Triangle = {
@@ -82,7 +81,7 @@ export type Presentation = {
     common_background: string,
     common_transition_style: string,
     display_mode: string,
-    selected_slide: string,
+    active_slide: string,
     data: Array<Slide>
 }
 

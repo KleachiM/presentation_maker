@@ -4,7 +4,7 @@ const pres: Presentation = {
     common_background: 'common_backgr',
     common_transition_style: 'common_trstyle',
     display_mode: 'presentation',
-    selected_slide: '0',
+    active_slide: '0',
     data: [
         {
             id: '0',
@@ -17,12 +17,12 @@ const pres: Presentation = {
                     id: 'text1',
                     type: 'text',
                     text_v: 'some text',
-                    font_size: 12,
+                    font_size: 36,
                     font_color: 'red',
                     font_family: 'Noto Sans',
                     font_weight: 5,
                     font_style: 'Bold',
-                    top_left_position: {x: 10, y: 10},
+                    top_left_position: {x: 200, y: 200},
                     bottom_right_position: {x: 100, y: 100},
                     layer_index: 1,
                     rotation: 0
@@ -50,8 +50,8 @@ const pres: Presentation = {
                     color: 'red',
                     data: {
                         gr_obj_type: 'circle',
-                        center_position: {x: 120, y: 20},
-                        radius: 20
+                        center_position: {x: 520, y: 120},
+                        radius: 120
                     },
                 }
             ]
@@ -72,8 +72,7 @@ const pres: Presentation = {
                     data: {
                         gr_obj_type: 'rectangle',
                         top_left_position: {x: 20, y: 20},
-                        rect_width: 100,
-                        rect_height: 50
+                        bottom_right_position: {x: 100, y: 50}
                     }
                 },
                 {
@@ -84,9 +83,9 @@ const pres: Presentation = {
                     color: 'blue',
                     data: {
                         gr_obj_type: 'triangle',
-                        first_point_position: {x: 20, y: 20},
-                        second_point_position: {x: 100, y: 100},
-                        third_point_position: {x: 300, y: 100}
+                        first_point_position: {x: 320, y: 320},
+                        second_point_position: {x: 400, y: 500},
+                        third_point_position: {x: 700, y: 500}
                     }
                 }
             ]

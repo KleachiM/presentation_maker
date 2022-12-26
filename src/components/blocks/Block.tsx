@@ -1,4 +1,4 @@
-import {GraphObject, Image, Text} from "../../../../models/types";
+import {GraphObject, Image, Text} from "../../models/types";
 
 type BlockProps = {
     elem: Text | Image | GraphObject
@@ -42,19 +42,19 @@ function GraphBlock(props: BlockProps) {
                 )
             }
 
-            if (gr_type === 'rectangle')
-            {
-                return (
-                    <svg width={'100%'} height={'100%'}>
-                        <rect x={props.elem.data.top_left_position.x}
-                              y={props.elem.data.top_left_position.y}
-                              width={props.elem.data.rect_width}
-                              height={props.elem.data.rect_height}
-                              fill={props.elem.color}
-                        />
-                    </svg>
-                )
-            }
+            // if (gr_type === 'rectangle')
+            // {
+            //     return (
+            //         <svg width={'100%'} height={'100%'}>
+            //             <rect x={props.elem.data.top_left_position.x}
+            //                   y={props.elem.data.top_left_position.y}
+            //                   width={props.elem.data.rect_width}
+            //                   height={props.elem.data.rect_height}
+            //                   fill={props.elem.color}
+            //             />
+            //         </svg>
+            //     )
+            // }
 
             if (gr_type === 'triangle')
             {

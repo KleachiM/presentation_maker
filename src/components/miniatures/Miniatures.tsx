@@ -1,6 +1,6 @@
 import {Presentation} from "../../models/types";
 import React from 'react';
-import {Slides} from "../slides/Slides";
+import {MiniSlides} from "./minislides/MiniSlides";
 import "./Miniatures.css"
 
 type ProgramProps = {
@@ -9,6 +9,6 @@ type ProgramProps = {
 
 export function Miniatures(props: ProgramProps) {
     return <div className="miniatures">
-        <Slides presentation={props.presentation}/>
+        <MiniSlides presentation={props.presentation}/>
     </div>
 }

@@ -1,0 +1,11 @@
+.slide {
+    border-style: dashed none;
+    border-color: aqua;
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.active_mini_slide {
+    border-style: solid double;
+    border-color: black;
+}
