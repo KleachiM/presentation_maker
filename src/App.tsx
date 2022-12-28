@@ -4,6 +4,7 @@ import {Presentation} from "./models/types";
 import {Miniatures} from "./components/miniatures/Miniatures";
 import {HeaderPanel} from "./components/header_panel/HeaderPanel";
 import {MainSlide} from "./components/mainslide/MainSlide";
+import {connect} from "react-redux";
 
 type AppProps = {
   presentation: Presentation
@@ -16,12 +17,16 @@ function App(props: AppProps) {
             <HeaderPanel/>
         </div>
         <div className="App-body">
-            <Miniatures presentation={props.presentation} />
+            <Miniatures presentation={props.presentation}/>
             <MainSlide presentation={props.presentation}/>
         </div>
     </div>
   );
 }
 
-export default App;
 
+const mapStateToProps = (state: Presentation) => ({
+    presentation: state
+})
+
+export default connect(mapStateToProps)(App)
