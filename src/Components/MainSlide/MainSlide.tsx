@@ -34,4 +34,5 @@ function mapStateToProps(state: Presentation) {
         activeSlide: state.active_slide
     }
 }
+
 export default connect(mapStateToProps)(MainSlide)
