@@ -16,43 +16,33 @@ const pres: Presentation = {
                 {
                     id: 'text1',
                     type: 'text',
-                    text_v: 'some text',
+                    text_value: 'some text',
                     font_size: 36,
                     font_color: 'red',
                     font_family: 'Noto Sans',
                     font_weight: 5,
                     font_style: 'Bold',
-                    top_left_position: {x: 200, y: 200},
-                    bottom_right_position: {x: 100, y: 100},
-                    layer_index: 1,
-                    rotation: 0
+                    position: {x: 200, y: 200},
+                    width: 100,
+                    height: 100
                 },
                 {
                     id: 'image1',
                     type: 'image',
                     source: 'https://www.coweb.ru/upload/coweb.png',
                     source_type: 'ref',
-                    top_left_position: {x: 200, y: 200},
-                    bottom_right_position: {x: 400, y: 400},
-                    crop: {
-                        top_left_point: {x: 200, y: 200},
-                        bottom_right_point: {x: 400, y: 400},
-                    },
-                    layer_index: 0,
-                    selected: false,
-                    rotation: 0
+                    position: {x: 200, y: 200},
+                    width: 200,
+                    height: 200,
                 },
                 {
                     id: 'graph11',
                     type: 'graphic',
-                    layer_index: 2,
-                    rotation: 0,
                     color: 'red',
-                    data: {
-                        gr_obj_type: 'circle',
-                        center_position: {x: 520, y: 120},
-                        radius: 120
-                    },
+                    gr_obj_type: 'circle',
+                    position: {x: 600, y: 300},
+                    width: 150,
+                    height: 150
                 }
             ]
         },
@@ -66,27 +56,20 @@ const pres: Presentation = {
                 {
                     id: 'graph21',
                     type: 'graphic',
-                    layer_index: 2,
-                    rotation: 0,
                     color: 'green',
-                    data: {
-                        gr_obj_type: 'rectangle',
-                        top_left_position: {x: 20, y: 20},
-                        bottom_right_position: {x: 100, y: 50}
-                    }
+                    gr_obj_type: 'rectangle',
+                    position: {x: 20, y: 20},
+                    width: 80,
+                    height: 100
                 },
                 {
                     id: 'graph22',
                     type: 'graphic',
-                    layer_index: 2,
-                    rotation: 0,
                     color: 'blue',
-                    data: {
-                        gr_obj_type: 'triangle',
-                        first_point_position: {x: 320, y: 320},
-                        second_point_position: {x: 400, y: 500},
-                        third_point_position: {x: 700, y: 500}
-                    }
+                    gr_obj_type: 'triangle',
+                    position: {x: 300, y: 300},
+                    width: 100,
+                    height: 100
                 }
             ]
         },

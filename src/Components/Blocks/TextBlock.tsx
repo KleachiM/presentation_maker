@@ -1,24 +1,29 @@
-import React from "react";
-import {Text} from "../../models/types";
+import React, {RefObject} from "react";
+import {TextElem} from "../../Models/types";
 import {getScaleValue} from "../viewFunctions";
+import {store} from "../../index";
+import {setElemChecked} from "../../Actions/Actions";
 
-type TextBlockProps = {
-    textBlock: Text,
+type TextElemProps = {
+    textElem: TextElem,
     isSmallElem: boolean,
+    elem_ref: RefObject<SVGTextElement>,
 }
 
-export function TextBlock(props: TextBlockProps) {
+export function TextBlock(props: TextElemProps) {
     const scale = getScaleValue(props.isSmallElem);
     return <>
         <text
-            x={props.textBlock.top_left_position.x / scale}
-            y={props.textBlock.top_left_position.y / scale}
-            fontSize={props.textBlock.font_size / scale}
-            fontFamily={props.textBlock.font_family}
-            fill={props.textBlock.font_color}
-            fontWeight={props.textBlock.font_weight / scale}
-            fontStyle={props.textBlock.font_style}
-            rotate={props.textBlock.rotation}
-        >{props.textBlock.text_v}</text>
+            ref={props.elem_ref}
+            x={props.textElem.position.x / scale}
+            y={props.textElem.position.y / scale}
+            fontSize={props.textElem.font_size / scale}
+            fontFamily={props.textElem.font_family}
+            fill={props.textElem.font_color}
+            fontWeight={props.textElem.font_weight / scale}
+            fontStyle={props.textElem.font_style}
+            // если это миниатюра, то обработчик события не невешивается
+            onMouseDown={() => props.isSmallElem ? void(0) : store.dispatch(setElemChecked(props.textElem.id))}
+        >{props.textElem.text_value}</text>
     </>
 }

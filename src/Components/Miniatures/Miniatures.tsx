@@ -1,21 +1,9 @@
-import {Presentation} from "../../models/types";
 import React from 'react';
-import {MiniSlides} from "./minislides/MiniSlides";
+import MiniSlides from "./Minislides/MiniSlides";
 import "./Miniatures.css"
-import {connect} from "react-redux";
 
-type ProgramProps = {
-    presentation: Presentation
-}
-
-export function Miniatures(props: ProgramProps) {
+export default function Miniatures() {
     return <div className="miniatures">
-        <MiniSlides presentation={props.presentation}/>
+        <MiniSlides />
     </div>
 }
-
-const mapStateToProps = (state: Presentation) => ({
-    presentation: state
-})
-
-export default connect(mapStateToProps)(Miniatures)

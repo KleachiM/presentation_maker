@@ -1,4 +1,4 @@
-import {Slide} from "../../../../models/types";
+import {Slide} from "../../../../Models/types";
 import {getSlideSvgElements} from "../../../viewFunctions";
 
 type SlideProps = {

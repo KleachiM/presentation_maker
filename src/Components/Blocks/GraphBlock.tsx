@@ -1,45 +1,63 @@
-import React from "react";
-import {GraphObject} from "../../models/types";
+import React, {RefObject} from "react";
+import {GraphElem} from "../../Models/types";
 import {getScaleValue} from "../viewFunctions";
+import {store} from "../../index";
+import {setElemChecked} from "../../Actions/Actions";
 
 type GraphBlockProps = {
-    graphBlock: GraphObject,
-    isSmallElem: boolean
+    graphElem: GraphElem,
+    isSmallElem: boolean,
+    elem_ref: RefObject<SVGCircleElement & SVGPolygonElement & SVGRectElement>
 }
 
 export function GraphBlock(props: GraphBlockProps) {
     const scale = getScaleValue(props.isSmallElem);
-    const gr_obj_type = props.graphBlock.data.gr_obj_type;
+    const gr_obj_type = props.graphElem.gr_obj_type;
     let svgElem = <rect/>
     if (gr_obj_type === "triangle") {
+        const leftPointX = (props.graphElem.position.x - props.graphElem.width / 2) / scale;
+        const leftPointY = (props.graphElem.position.y + props.graphElem.height / 2) / scale;
+
+        const rightPointX = (props.graphElem.position.x + props.graphElem.width / 2) / scale;
+        const rightPointY = (props.graphElem.position.y + props.graphElem.height / 2) / scale;
+
+        const centerPointX = props.graphElem.position.x / scale;
+        const centerPointY = (props.graphElem.position.y - props.graphElem.height / 2) / scale;
+
         svgElem = <polygon
+            ref={props.elem_ref}
             points={
-                props.graphBlock.data.first_point_position.x / scale + " " +
-                props.graphBlock.data.first_point_position.y / scale + ", " +
-                props.graphBlock.data.second_point_position.x / scale + " " +
-                props.graphBlock.data.second_point_position.y / scale + ", " +
-                props.graphBlock.data.third_point_position.x / scale + " " +
-                props.graphBlock.data.third_point_position.y / scale
+                leftPointX + " " + leftPointY + ", " +
+                rightPointX + " " + rightPointY + ", " +
+                centerPointX + " " + centerPointY
             }
-            fill={props.graphBlock.color}
+            fill={props.graphElem.color}
+            // если это миниатюра, то обработчик события не невешивается
+            onMouseDown={() => props.isSmallElem ? void(0) : store.dispatch(setElemChecked(props.graphElem.id))}
         />
     }
     if (gr_obj_type === "rectangle") {
         svgElem = <rect
-            x={props.graphBlock.data.top_left_position.x / scale}
-            y={props.graphBlock.data.top_left_position.y / scale}
-            width={(props.graphBlock.data.bottom_right_position.x - props.graphBlock.data.top_left_position.x) / scale}
-            height={(props.graphBlock.data.bottom_right_position.y - props.graphBlock.data.top_left_position.y) / scale}
-            fill={props.graphBlock.color}
+            ref={props.elem_ref}
+            x={props.graphElem.position.x / scale}
+            y={props.graphElem.position.y / scale}
+            width={(props.graphElem.width) / scale}
+            height={(props.graphElem.height) / scale}
+            fill={props.graphElem.color}
+            // если это миниатюра, то обработчик события не невешивается
+            onMouseDown={() => props.isSmallElem ? void(0) : store.dispatch(setElemChecked(props.graphElem.id))}
         />
     }
     if (gr_obj_type === "circle") {
-        svgElem = <><circle
-            cx={props.graphBlock.data.center_position.x / scale}
-            cy={props.graphBlock.data.center_position.y / scale}
-            r={props.graphBlock.data.radius / scale}
-            fill={props.graphBlock.color}
-        /></>
+        svgElem = <circle
+            ref={props.elem_ref}
+            cx={props.graphElem.position.x / scale}
+            cy={props.graphElem.position.y / scale}
+            r={(props.graphElem.width / 2) / scale}
+            fill={props.graphElem.color}
+            // если это миниатюра, то обработчик события не невешивается
+            onMouseDown={() => props.isSmallElem ? void(0) : store.dispatch(setElemChecked(props.graphElem.id))}
+        />
     }
     return svgElem;
 }

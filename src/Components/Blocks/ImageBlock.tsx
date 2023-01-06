@@ -1,21 +1,27 @@
-import React from "react";
-import {Image} from "../../models/types";
+import React, {RefObject} from "react";
+import {ImageElem} from "../../Models/types";
 import {getScaleValue} from "../viewFunctions";
+import {store} from "../../index";
+import {setElemChecked} from "../../Actions/Actions";
 
-type ImageBlockProps = {
-    imageBlock: Image,
-    isSmallElem: boolean
+type ImageElemProps = {
+    imageElem: ImageElem,
+    isSmallElem: boolean,
+    elem_ref: RefObject<SVGImageElement>,
 }
 
-export function ImageBlock(props: ImageBlockProps) {
+export function ImageBlock(props: ImageElemProps) {
     const scale = getScaleValue(props.isSmallElem);
     return <>
         <image
-            href={props.imageBlock.source}
-            x={props.imageBlock.top_left_position.x / scale}
-            y={props.imageBlock.top_left_position.y / scale}
-            width={(props.imageBlock.bottom_right_position.x - props.imageBlock.top_left_position.x) / scale}
-            height={(props.imageBlock.bottom_right_position.y - props.imageBlock.top_left_position.x) / scale}
+            ref={props.elem_ref}
+            href={props.imageElem.source}
+            x={props.imageElem.position.x / scale}
+            y={props.imageElem.position.y / scale}
+            width={(props.imageElem.width) / scale}
+            height={(props.imageElem.height) / scale}
+            // если это миниатюра, то обработчик события не невешивается
+            onMouseDown={() => props.isSmallElem ? void(0) : store.dispatch(setElemChecked(props.imageElem.id))}
         />
     </>
 }
