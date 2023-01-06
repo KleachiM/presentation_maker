@@ -60,5 +60,5 @@ export type ActionType = any
 export enum StateTypes {
     SET_ACTIVE_SLIDE,
     SET_ELEM_CHECKED,
-    START_ELEM_DRAG
+    SET_ELEM_NEW_POS
 }

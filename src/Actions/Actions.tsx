@@ -1,4 +1,4 @@
-import {StateTypes} from "../Models/types";
+import {Point, Slide, StateTypes} from "../Models/types";
 
 export function setActiveSlide(activeSlide: string) {
     return {
@@ -12,5 +12,17 @@ export function setElemChecked(elemId: string) {
     return {
         type: StateTypes.SET_ELEM_CHECKED,
         payload: elemId
+    }
+}
+
+export function setElemPosition(slide: Slide, elemId: string | undefined, newPos: Point) {
+    console.log(`set elem ${elemId}`)
+    return {
+        type: StateTypes.SET_ELEM_NEW_POS,
+        payload: {
+            slide: slide,
+            elemId: elemId,
+            newPos: newPos
+        }
     }
 }

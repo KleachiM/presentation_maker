@@ -1,19 +1,25 @@
 import {Dispatch, RefObject, SetStateAction, useEffect} from "react";
-import {Point} from "../Models/types";
+import {Point, Slide} from "../Models/types";
+import {setElemPosition} from "../Actions/Actions";
+import {store} from "../index";
 
 type DNDElemProps = {
-    ref: RefObject<SVGElement | null>,
+    elemRef: RefObject<SVGElement | null>,
     setPos: Dispatch<SetStateAction<Point>>,
     curr_pos: Point,
-    mainSvgRef: RefObject<SVGSVGElement> | undefined
+    mainSvgRef: RefObject<SVGSVGElement> | undefined,
+    slide: Slide,
+    elemId: string
 }
 export function useDragAndDropElement(props: DNDElemProps) {
     const mainSvgPosition = props.mainSvgRef?.current?.getBoundingClientRect()
+    const slide = props.slide
+    const elemId = props.elemId
     let startPos = {x: 0, y: 0}
     let newPos = {x: 0, y: 0}
     useEffect(() => {
-        props.ref.current?.addEventListener('mousedown', mouseDownHandl)
-        return () => props.ref.current?.removeEventListener('mousedown', mouseDownHandl)
+        props.elemRef.current?.addEventListener('mousedown', mouseDownHandl)
+        return () => props.elemRef.current?.removeEventListener('mousedown', mouseDownHandl)
     })
 
     const mouseDownHandl = (event: MouseEvent) => {
@@ -33,7 +39,7 @@ export function useDragAndDropElement(props: DNDElemProps) {
             x: event.pageX - startPos.x,
             y: event.pageY - startPos.y
         }
-        console.log(`elem pos x: ${props.curr_pos.x} mouse x: ${event.pageX}`)
+        // console.log(`elem pos x: ${props.curr_pos.x} mouse x: ${event.pageX}`)
         newPos = {
             x: props.curr_pos.x + delta.x,
             y: props.curr_pos.y + delta.y
@@ -43,8 +49,9 @@ export function useDragAndDropElement(props: DNDElemProps) {
     }
 
     const  mouseUpHandl = () => {
-        console.log('mouse up!')
-        document.removeEventListener('mousemove', mouseMoveHandl)
+        // setElemPosition(slide, elemId, newPos)
+        store.dispatch(setElemPosition(slide, elemId, newPos))
         document.removeEventListener('mouseup', mouseUpHandl)
+        document.removeEventListener('mousemove', mouseMoveHandl)
     }
 }

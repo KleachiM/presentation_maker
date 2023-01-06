@@ -9,3 +9,9 @@ export function getElementPosition(slides: Array<Slide>, active_slide: Slide, el
         y: active_elem.position.y
     }
 }
+
+export function getNewSlide(slide: Slide, elemId: string, newPos: Point): Slide {
+    const changedElemIndex = slide.slide_data.map(item => item.id).indexOf(elemId)
+    slide.slide_data[changedElemIndex].position = newPos
+    return slide
+}

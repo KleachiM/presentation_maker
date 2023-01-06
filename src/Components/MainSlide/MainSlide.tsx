@@ -16,7 +16,7 @@ export function MainSlide(props: MainSlideProps) {
     const slideSvgElements = getSlideSvgElements({
         slide: mainSlide,
         isBigSlide: true,
-        mainSvgRef: mainSlideSvgRef
+        mainSvgRef: mainSlideSvgRef,
     });
     return <div className="mainSlide">
         <svg xmlns="http://www.w3.org/2000/svg" version="1.1"
