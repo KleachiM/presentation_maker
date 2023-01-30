@@ -1,4 +1,7 @@
 .header-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
     text-align: center;
     font-family: SansSerif;
     font-size: 3vw;

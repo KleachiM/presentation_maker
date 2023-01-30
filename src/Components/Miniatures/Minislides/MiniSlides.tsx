@@ -4,6 +4,7 @@ import './Slide.css';
 import {setActiveSlide} from '../../../Actions/Actions';
 import {connect} from 'react-redux';
 import {store} from '../../../index';
+import React from 'react';
 
 type SlidesProps = {
     slides: Array<Slide>,

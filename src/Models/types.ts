@@ -41,15 +41,14 @@ export type Slide = {
     background: string,
     transition_style: string,
     scale: number,
-    selected_blocks: Array<string>,
     slide_data: Array<TextElem|ImageElem|GraphElem>
 }
 
 export type Presentation = {
-    common_background: string,
-    common_transition_style: string,
+    title: string,
     display_mode: string,
     active_slide: string,
+    selected_elements: Array<string>,
     data: Array<Slide>
 }
 
@@ -60,5 +59,7 @@ export type ActionType = any
 export enum StateTypes {
     SET_ACTIVE_SLIDE,
     SET_ELEM_CHECKED,
-    SET_ELEM_NEW_POS
+    SET_ELEM_NEW_POS,
+    SET_ELEM_NEW_SIZE,
+    CHANGE_TITLE
 }

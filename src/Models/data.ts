@@ -1,17 +1,16 @@
 import {Presentation} from './types';
 
 const pres: Presentation = {
-	common_background: 'common_backgr',
-	common_transition_style: 'common_trstyle',
+	title: 'Tst title',
 	display_mode: 'presentation',
 	active_slide: '0',
+	selected_elements: [],
 	data: [
 		{
 			id: '0',
 			background: 'blue',
 			transition_style: 'standart',
 			scale: 100,
-			selected_blocks: ['text1'],
 			slide_data: [
 				{
 					id: 'text1',
@@ -22,9 +21,9 @@ const pres: Presentation = {
 					font_family: 'Noto Sans',
 					font_weight: 5,
 					font_style: 'Bold',
-					position: {x: 200, y: 200},
-					width: 100,
-					height: 100
+					position: {x: 200, y: 50},
+					width: 250,
+					height: 50
 				},
 				{
 					id: 'image1',
@@ -51,7 +50,6 @@ const pres: Presentation = {
 			background: 'blue',
 			transition_style: 'standart',
 			scale: 100,
-			selected_blocks: [],
 			slide_data: [
 				{
 					id: 'graph21',
@@ -78,7 +76,6 @@ const pres: Presentation = {
 			background: 'blue',
 			transition_style: 'standart',
 			scale: 100,
-			selected_blocks: [],
 			slide_data: []
 		}
 	]

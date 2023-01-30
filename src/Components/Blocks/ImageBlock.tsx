@@ -1,13 +1,12 @@
 import React, {RefObject} from 'react';
 import {ImageElem} from '../../Models/types';
 import {getScaleValue} from '../viewFunctions';
-import {store} from '../../index';
-import {setElemChecked} from '../../Actions/Actions';
 
 type ImageElemProps = {
     imageElem: ImageElem,
     isSmallElem: boolean,
     elem_ref: RefObject<SVGImageElement>,
+	selectionBorder?: JSX.Element
 }
 
 export function ImageBlock(props: ImageElemProps) {
@@ -20,8 +19,7 @@ export function ImageBlock(props: ImageElemProps) {
 			y={props.imageElem.position.y / scale}
 			width={(props.imageElem.width) / scale}
 			height={(props.imageElem.height) / scale}
-			// если это миниатюра, то обработчик события не невешивается
-			onMouseDown={() => props.isSmallElem ? void(0) : store.dispatch(setElemChecked(props.imageElem.id))}
 		/>
+		{props.selectionBorder}
 	</>;
 }

@@ -9,7 +9,7 @@ type SlideBlockProps = {
 }
 
 export function MiniSlideBlock(props: SlideBlockProps) {
-	const ref = useRef<SVGTextElement & SVGImageElement & SVGCircleElement & SVGRectElement & SVGPolygonElement>(null);
+	const ref = useRef<HTMLTextAreaElement & SVGImageElement & SVGCircleElement & SVGRectElement & SVGPolygonElement>(null);
 	let svgElem: JSX.Element = <rect/>;
 	if (props.block.type === 'text') {
 		svgElem = <TextBlock textElem={props.block} isSmallElem={true} elem_ref={ref}/>;
