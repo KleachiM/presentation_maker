@@ -1,7 +1,8 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {Point, Slide, SlideElement} from "../models/types";
+import {Point, Slide, Image, SlideElement} from "../models/types";
 import {pres} from "../models/data";
 import {setElemPosition} from "../Actions/Actions";
+import MiniSlides from "../Components/Miniatures/Minislides/MiniSlides";
 
 type initialStateType = {
     display_mode: string;
@@ -52,7 +53,7 @@ const presentation = createSlice({
         },
         addFig: (state, action: PayloadAction<{element: SlideElement}>) => {
             state.data[state.active_slide_index].slide_data.push(action.payload.element)
-        }
+        },
     }
 })
 
