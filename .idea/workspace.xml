@@ -2,7 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e431678d-1705-4842-b7f9-41f437d6daec" name="Changes" comment="master убрал мутацию пропсов, переделал, драгндроп, ресайз и название презентации, нарисовал иконки, сделал добавление фигур">
-      <change afterPath="$PROJECT_DIR$/presentation_maker" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/presentation_maker/src/models/images..ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation_maker/public/coveb19.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation_maker/src/Components/HeaderPanel/HeaderPanel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/presentation_maker/src/Components/HeaderPanel/HeaderPanel.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation_maker/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/presentation_maker/src/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation_maker/src/models/data.ts" beforeDir="false" afterPath="$PROJECT_DIR$/presentation_maker/src/models/data.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation_maker/src/store/presentation.ts" beforeDir="false" afterPath="$PROJECT_DIR$/presentation_maker/src/store/presentation.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,7 +72,7 @@
       <workItem from="1673003535001" duration="3844000" />
       <workItem from="1673363966180" duration="1762000" />
       <workItem from="1674937048226" duration="991000" />
-      <workItem from="1675108737581" duration="20355000" />
+      <workItem from="1675108737581" duration="24587000" />
     </task>
     <task id="LOCAL-00001" summary="COWEB-19 изменил readme">
       <created>1669307118257</created>
@@ -82,7 +88,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675282685861</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="master убрал мутацию пропсов, переделал, драгндроп, ресайз и название презентации, нарисовал иконки, сделал добавление фигур">
+      <created>1675282836901</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1675282836901</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -94,6 +107,11 @@
         <entry key="MAIN">
           <value>
             <State>
+              <option name="CUSTOM_BOOLEAN_PROPERTIES">
+                <map>
+                  <entry key="Show.Git.Branches" value="false" />
+                </map>
+              </option>
               <option name="FILTERS">
                 <map>
                   <entry key="branch">
