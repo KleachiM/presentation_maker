@@ -1,4 +1,4 @@
-import {Slide} from '../Models/types';
+import {Slide} from '../models/types';
 import {MainSlideBlock} from './Blocks/MainSlideBlock';
 import {MiniSlideBlock} from './Blocks/MiniSlideBlock';
 import React, {RefObject} from 'react';
@@ -7,7 +7,8 @@ type slideElementsPayload = {
     slide: Slide,
     isBigSlide: boolean,
     mainSvgRef?: RefObject<SVGSVGElement>,
-	selectedElements?: Array<string>
+	selectedElements?: Array<string>,
+	slidePos: number,
 }
 export function getSlideSvgElements(payload: slideElementsPayload): Array<JSX.Element> {
 	const svgSlideElements: Array<JSX.Element> = [];
@@ -24,6 +25,8 @@ export function getSlideSvgElements(payload: slideElementsPayload): Array<JSX.El
 					mainSvgRef={mainSvgRef}
 					slide={slide}
 					selectedElements={payload.selectedElements}
+					slideDataPos={i}
+					slidePos={payload.slidePos}
 				/>
 				: <MiniSlideBlock key={slideElements[i].id} block={slideElements[i]}/>
 		);

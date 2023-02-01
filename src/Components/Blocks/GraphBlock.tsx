@@ -1,5 +1,5 @@
 import React, {RefObject} from 'react';
-import {GraphElem} from '../../Models/types';
+import {GraphElem} from '../../models/types';
 import {getScaleValue} from '../viewFunctions';
 
 type GraphBlockProps = {

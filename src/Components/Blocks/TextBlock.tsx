@@ -1,5 +1,5 @@
 import React, {RefObject} from 'react';
-import {TextElem} from '../../Models/types';
+import {TextElem} from '../../models/types';
 import {getScaleValue} from '../viewFunctions';
 
 type TextElemProps = {

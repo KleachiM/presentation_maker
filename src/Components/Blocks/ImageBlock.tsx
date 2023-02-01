@@ -1,5 +1,5 @@
 import React, {RefObject} from 'react';
-import {ImageElem} from '../../Models/types';
+import {ImageElem} from '../../models/types';
 import {getScaleValue} from '../viewFunctions';
 
 type ImageElemProps = {

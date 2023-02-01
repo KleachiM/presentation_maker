@@ -1,9 +1,9 @@
 import React from 'react';
-import {Presentation} from '../../../Models/types';
+import {Presentation} from '../../../models/types';
 import {connect} from 'react-redux';
-import { changePresentationTitle } from '../../../Actions/Actions';
 import './PresentationName.css';
-import {store} from '../../../index';
+import {AppState, store} from "../../../store";
+import {presentationActions} from "../../../store/presentation";
 
 type PresentationNameProps = {
 	title: string
@@ -15,22 +15,22 @@ function PresentationName(props: PresentationNameProps) {
 				(e) => {
 					if (e.key === 'Enter') {
 						e.currentTarget.value = (e.currentTarget.value == '') ? 'Презентация без названия' : e.currentTarget.value;
-						store.dispatch(changePresentationTitle(e.currentTarget.value));
+						store.dispatch(presentationActions.setTitle(e.currentTarget.value));
 						e.currentTarget.blur();}
 				}
 			}
 			onBlur={
 				(e) => {
 					e.currentTarget.value = (e.currentTarget.value == '') ? 'Презентация без названия' : e.currentTarget.value;
-					store.dispatch(changePresentationTitle(e.currentTarget.value));
+					store.dispatch(presentationActions.setTitle(e.currentTarget.value));
 				}
 			}
 		/>
 	</>;
 }
 
-const mapStateToProps = (state: Presentation) => ({
-	title: state.title,
+const mapStateToProps = (state: AppState) => ({
+	title: state.presentation.title,
 });
 
 export default connect(mapStateToProps)(PresentationName);

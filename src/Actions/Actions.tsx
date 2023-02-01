@@ -1,40 +1,22 @@
-import {Point, Slide, StateTypes} from '../Models/types';
+import {Point, Slide, StateTypes} from '../models/types';
+import {presentationActions} from "../store/presentation";
 
-export function setActiveSlide(activeSlide: string) {
-	return {
-		type: StateTypes.SET_ACTIVE_SLIDE,
-		payload: activeSlide
-	};
-}
 
-export function setElemChecked(elemId: Array<string>) {
-	return {
-		type: StateTypes.SET_ELEM_CHECKED,
-		payload: elemId
-	};
-}
-
-export function setElemPosition(slide: Slide, elemId: string | undefined, newPos: Point) {
-	return {
-		type: StateTypes.SET_ELEM_NEW_POS,
-		payload: {
+export function setElemPosition(slide: Slide, elemId: string, newPos: Point) {
+	return presentationActions.setElemPosition({
 			slide: slide,
 			elemId: elemId,
 			newPos: newPos
-		}
-	};
+	})
 }
 
-export function setElemSize(slide: Slide, elemId: string | undefined, newWidth: number, newHeight: number) {
-	return {
-		type: StateTypes.SET_ELEM_NEW_SIZE,
-		payload: {
-			slide: slide,
-			elemId: elemId,
-			newWidth: newWidth,
-			newHeight: newHeight
-		}
-	};
+export function setElemSize(slide: Slide, elemId: string, newWidth: number, newHeight: number) {
+	return presentationActions.setElementSize({
+		slide: slide,
+		elemId: elemId,
+		newWidth: newWidth,
+		newHeight: newHeight
+	})
 }
 
 export function changePresentationTitle(newTitle: string) {

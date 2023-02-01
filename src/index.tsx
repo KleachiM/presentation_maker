@@ -4,14 +4,13 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {createStore} from 'redux';
-import {mainReducer} from './Reducers/Reducers';
 import {Provider} from 'react-redux';
+import {configureStore} from "@reduxjs/toolkit";
+import {store} from "./store";
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
-
-export const store = createStore(mainReducer);
 
 root.render(
 	<Provider store={store}>
@@ -23,3 +22,7 @@ root.render(
 );
 
 reportWebVitals();
+function configureStoxre(mainReducer: (state: import("./models/types").Presentation | undefined, action: any) => import("./models/types").Presentation) {
+    throw new Error('Function not implemented.');
+}
+

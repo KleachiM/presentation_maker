@@ -36,18 +36,21 @@ export type TextElem = Block & Text
 export type ImageElem = Block & Image
 export type GraphElem = Block & GraphObj
 
+export type SlideElement = TextElem|ImageElem|GraphElem;
+
 export type Slide = {
     id: string,
     background: string,
     transition_style: string,
     scale: number,
-    slide_data: Array<TextElem|ImageElem|GraphElem>
+    slide_data: SlideElement[],
 }
 
 export type Presentation = {
     title: string,
     display_mode: string,
     active_slide: string,
+    active_slide_index: number,
     selected_elements: Array<string>,
     data: Array<Slide>
 }

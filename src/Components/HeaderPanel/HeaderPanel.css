@@ -6,4 +6,16 @@
     font-family: SansSerif;
     font-size: 3vw;
     border-style: double;
+    margin: 0 20px;
+    border: none;
 }
+
+.header-panel .click-button {
+    cursor: pointer;
+    border-radius: 8px;
+    margin-right: 10px;
+}
+.header-panel .click-button:hover {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+

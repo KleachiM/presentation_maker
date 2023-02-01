@@ -1,5 +1,5 @@
 import React, {RefObject} from 'react';
-import {Point} from '../../Models/types';
+import {Point} from '../../models/types';
 
 type SelBorderProps = {
     elemId: string,

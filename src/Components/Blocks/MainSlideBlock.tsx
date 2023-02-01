@@ -2,15 +2,19 @@ import React, {RefObject, useRef, useState} from 'react';
 import {TextBlock} from './TextBlock';
 import {ImageBlock} from './ImageBlock';
 import {GraphBlock} from './GraphBlock';
-import {useDragAndDropElement, useResizeElement} from '../../CustomHooks/ElementMouseEvents';
-import {GraphElem, ImageElem, Slide, TextElem} from '../../Models/types';
+import {useDragAndDropElement, useResizeElement} from '../../customHooks/ElementMouseEvents';
+import {GraphElem, ImageElem, Slide, TextElem} from '../../models/types';
 import {SelectionBorder} from './SelectionBorder';
+import {deepClone} from "../../utils/utils";
+import {presentationActions} from "../../store/presentation";
 
 type SlideBlockProps = {
     block: TextElem | ImageElem | GraphElem,
     mainSvgRef: RefObject<SVGSVGElement> | undefined,
     slide: Slide,
-	selectedElements: Array<string> | undefined
+	selectedElements: Array<string> | undefined,
+	slidePos: number,
+	slideDataPos: number,
 }
 
 export function MainSlideBlock(props: SlideBlockProps) {
@@ -35,9 +39,17 @@ export function MainSlideBlock(props: SlideBlockProps) {
 	});
 
 	// обновление координат после DnD и Resize
-	props.block.position = pos;
-	props.block.width = size.width;
-	props.block.height = size.height;
+	const newPos = {
+		position: pos,
+		...size
+	}
+
+	const newSlide = deepClone(props.slide)
+	newSlide.slide_data[props.slideDataPos] = {
+		...newSlide.slide_data[props.slideDataPos],
+		...newPos
+	}
+
 
 	let svgElem: JSX.Element = <rect/>;
 	let selectionBorder = <></>;
@@ -45,9 +57,9 @@ export function MainSlideBlock(props: SlideBlockProps) {
 		selectionBorder = <SelectionBorder
 			elemId={props.block.id}
 			elemType={props.block.type}
-			elemPos={props.block.position}
-			elemWidth={props.block.width}
-			elemHeight={props.block.height}
+			elemPos={newPos.position}
+			elemWidth={newPos.width}
+			elemHeight={newPos.height}
 			topLeftPointRef={topLeftPointRef}
 			topRightPointRef={topRightPointRef}
 			botLeftPointRef={botLeftPointRef}

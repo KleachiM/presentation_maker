@@ -1,13 +1,14 @@
 import {Presentation} from './types';
 
-const pres: Presentation = {
+export const pres: Presentation = {
 	title: 'Tst title',
 	display_mode: 'presentation',
-	active_slide: '0',
+	active_slide: '0w',
+	active_slide_index: 0,
 	selected_elements: [],
 	data: [
 		{
-			id: '0',
+			id: '0w',
 			background: 'blue',
 			transition_style: 'standart',
 			scale: 100,
@@ -34,19 +35,10 @@ const pres: Presentation = {
 					width: 200,
 					height: 200,
 				},
-				{
-					id: 'graph11',
-					type: 'graphic',
-					color: 'red',
-					gr_obj_type: 'circle',
-					position: {x: 600, y: 300},
-					width: 150,
-					height: 150
-				}
 			]
 		},
 		{
-			id: '1',
+			id: '1w',
 			background: 'blue',
 			transition_style: 'standart',
 			scale: 100,
@@ -79,12 +71,4 @@ const pres: Presentation = {
 			slide_data: []
 		}
 	]
-};
-
-function getTestData(): Presentation {
-	return pres;
-}
-
-export {
-	getTestData,
 };

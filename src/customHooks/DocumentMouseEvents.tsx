@@ -1,6 +1,6 @@
 import {useEffect} from 'react';
-import {store} from '../index';
-import {setElemChecked} from '../Actions/Actions';
+import {store} from "../store";
+import {presentationActions} from "../store/presentation";
 
 export function useMouseDownDocumentHandler() {
 	useEffect(() => {
@@ -12,7 +12,7 @@ export function useMouseDownDocumentHandler() {
 
 	const mouseDownHandler = (event: MouseEvent) => {
 		if (!event.defaultPrevented) {
-			store.dispatch(setElemChecked([]));
+			store.dispatch(presentationActions.setSelectedElements([]));
 		}
 	};
 }

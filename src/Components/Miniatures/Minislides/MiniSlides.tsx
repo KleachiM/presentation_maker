@@ -1,10 +1,10 @@
-import {Presentation, Slide} from '../../../Models/types';
+import {Presentation, Slide} from '../../../models/types';
 import {SlidesItem} from './Slide/SlidesItem';
 import './Slide.css';
-import {setActiveSlide} from '../../../Actions/Actions';
 import {connect} from 'react-redux';
-import {store} from '../../../index';
 import React from 'react';
+import {AppState, store} from "../../../store";
+import {presentationActions} from "../../../store/presentation";
 
 type SlidesProps = {
     slides: Array<Slide>,
@@ -13,21 +13,27 @@ type SlidesProps = {
 
 export function MiniSlides(props: SlidesProps) {
 	return <>
-		{props.slides.map(slide => {
+		{props.slides.map((slide, index) => {
 			return <div key={slide.id}
 				className={slide.id === props.activeSlideId ? 'slide active_mini_slide' : 'slide'}
-				onMouseDown={() => store.dispatch(setActiveSlide(slide.id))}>
-				<SlidesItem slides_item={slide}/>
+				onMouseDown={() => {
+					store.dispatch(presentationActions.setActiveSlide(slide.id))
+					store.dispatch(presentationActions.setActiveSlideIndex(index))
+				}}>
+				<SlidesItem slides_item={slide} slidePos={index} />
 			</div>;
 		})}
 	</>;
 }
 
-const mapDispathToProps = {setActiveSlide};
+const mapDispathToProps = {setActiveSlide: presentationActions.setActiveSlide};
 
-const mapStateToProps = (state: Presentation) => ({
-	slides: state.data,
-	activeSlideId: state.active_slide
-});
+const mapStateToProps = (state: AppState) => {
+	console.log(state)
+	return {
+		slides: state.presentation.data,
+		activeSlideId: state.presentation.active_slide
+	}
+};
 
 export default connect(mapStateToProps, mapDispathToProps)(MiniSlides);

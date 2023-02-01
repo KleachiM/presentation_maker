@@ -3,7 +3,7 @@ import './App.css';
 import Miniatures from './Components/Miniatures/Miniatures';
 import {HeaderPanel} from './Components/HeaderPanel/HeaderPanel';
 import MainSlide from './Components/MainSlide/MainSlide';
-import {useMouseDownDocumentHandler} from './CustomHooks/DocumentMouseEvents';
+import {useMouseDownDocumentHandler} from './customHooks/DocumentMouseEvents';
 
 export default function App() {
 	useMouseDownDocumentHandler();

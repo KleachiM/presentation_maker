@@ -1,5 +1,5 @@
 import React, {useRef} from 'react';
-import {GraphElem, ImageElem, TextElem} from '../../Models/types';
+import {GraphElem, ImageElem, TextElem} from '../../models/types';
 import {TextBlock} from './TextBlock';
 import {ImageBlock} from './ImageBlock';
 import {GraphBlock} from './GraphBlock';

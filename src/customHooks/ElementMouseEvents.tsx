@@ -1,7 +1,9 @@
 import {Dispatch, RefObject, SetStateAction, useEffect} from 'react';
-import {Point, Slide} from '../Models/types';
-import {setElemChecked, setElemPosition, setElemSize} from '../Actions/Actions';
-import {store} from '../index';
+import {Point, Slide} from '../models/types';
+import {setElemPosition, setElemSize} from '../Actions/Actions';
+import {store} from "../store";
+import {presentationActions} from "../store/presentation";
+import {log} from "util";
 
 type DNDElemProps = {
     elemRef: RefObject<SVGElement | null>,
@@ -17,6 +19,7 @@ export function useDragAndDropElement(props: DNDElemProps) {
 	let startPos = {x: 0, y: 0};
 	let newPos = {x: 0, y: 0};
 	let delta = {x: 0, y: 0};
+	console.log(props)
 	useEffect(() => {
 		props.elemRef.current?.addEventListener('mousedown', mouseDownHandl);
 		return () => props.elemRef.current?.removeEventListener('mousedown', mouseDownHandl);
@@ -28,7 +31,7 @@ export function useDragAndDropElement(props: DNDElemProps) {
 			y: event.pageY
 		};
 
-		store.dispatch(setElemChecked([elemId]));
+		store.dispatch(presentationActions.setSelectedElements([elemId]));
 		document.addEventListener('mousemove', mouseMoveHandl);
 		document.addEventListener('mouseup', mouseUpHandl);
 
