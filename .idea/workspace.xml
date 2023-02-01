@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="e431678d-1705-4842-b7f9-41f437d6daec" name="Changes" comment="COWEB-19 изменил readme">
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/presentation_maker/src/models/shapes.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/presentation_maker/src/store/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/presentation_maker/src/store/presentation.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/presentation_maker/src/utils/utils.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation_maker/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/presentation_maker/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation_maker/src/Actions/Actions.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/presentation_maker/src/Actions/Actions.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation_maker/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/presentation_maker/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation_maker/src/Components/Blocks/GraphBlock.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/presentation_maker/src/Components/Blocks/GraphBlock.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation_maker/src/Components/Blocks/ImageBlock.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/presentation_maker/src/Components/Blocks/ImageBlock.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation_maker/src/Components/Blocks/MainSlideBlock.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/presentation_maker/src/Components/Blocks/MainSlideBlock.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation_maker/src/Components/Blocks/MiniSlideBlock.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/presentation_maker/src/Components/Blocks/MiniSlideBlock.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation_maker/src/Components/Blocks/SelectionBorder.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/presentation_maker/src/Components/Blocks/SelectionBorder.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation_maker/src/Components/Blocks/TextBlock.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/presentation_maker/src/Components/Blocks/TextBlock.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation_maker/src/Components/HeaderPanel/HeaderPanel.css" beforeDir="false" afterPath="$PROJECT_DIR$/presentation_maker/src/Components/HeaderPanel/HeaderPanel.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation_maker/src/Components/HeaderPanel/HeaderPanel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/presentation_maker/src/Components/HeaderPanel/HeaderPanel.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation_maker/src/Components/HeaderPanel/PresentationName/PresentationName.css" beforeDir="false" afterPath="$PROJECT_DIR$/presentation_maker/src/Components/HeaderPanel/PresentationName/PresentationName.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation_maker/src/Components/HeaderPanel/PresentationName/PresentationName.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/presentation_maker/src/Components/HeaderPanel/PresentationName/PresentationName.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation_maker/src/Components/MainSlide/MainSlide.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/presentation_maker/src/Components/MainSlide/MainSlide.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation_maker/src/Components/Miniatures/Minislides/MiniSlides.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/presentation_maker/src/Components/Miniatures/Minislides/MiniSlides.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation_maker/src/Components/Miniatures/Minislides/Slide/SlidesItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/presentation_maker/src/Components/Miniatures/Minislides/Slide/SlidesItem.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation_maker/src/Components/viewFunctions.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/presentation_maker/src/Components/viewFunctions.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation_maker/src/CustomHooks/DocumentMouseEvents.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/presentation_maker/src/customHooks/DocumentMouseEvents.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation_maker/src/CustomHooks/ElementMouseEvents.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/presentation_maker/src/customHooks/ElementMouseEvents.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation_maker/src/Models/data.ts" beforeDir="false" afterPath="$PROJECT_DIR$/presentation_maker/src/models/data.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation_maker/src/Models/modelFunctions.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/presentation_maker/src/models/modelFunctions.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation_maker/src/Models/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/presentation_maker/src/models/types.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation_maker/src/Reducers/Reducers.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/presentation_maker/src/store/reducers.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation_maker/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/presentation_maker/src/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation_maker/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/presentation_maker/src/index.tsx" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="TypeScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/presentation_maker" />
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2I03WfGRO4X8riUQpagLzSef6JI" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/PresentationMaker",
+    "nodejs_package_manager_path": "yarn",
+    "ts.external.directory.path": "C:\\PresentationMaker\\presentation_maker\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\PresentationMaker\presentation_maker\src\models\CommonFunctions\SupportFunctions" />
+      <recent name="C:\PresentationMaker\presentation_maker\src\View" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e431678d-1705-4842-b7f9-41f437d6daec" name="Changes" comment="" />
+      <created>1669304706318</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1669304706318</updated>
+      <workItem from="1669304708062" duration="441000" />
+      <workItem from="1669306671355" duration="869000" />
+      <workItem from="1669446810796" duration="562000" />
+      <workItem from="1669447393808" duration="21797000" />
+      <workItem from="1669563094547" duration="1513000" />
+      <workItem from="1669564945177" duration="2835000" />
+      <workItem from="1669579998173" duration="1494000" />
+      <workItem from="1671980263164" duration="10000" />
+      <workItem from="1672990819443" duration="7684000" />
+      <workItem from="1673003535001" duration="3844000" />
+      <workItem from="1673363966180" duration="1762000" />
+      <workItem from="1674937048226" duration="991000" />
+      <workItem from="1675108737581" duration="19915000" />
+    </task>
+    <task id="LOCAL-00001" summary="COWEB-19 изменил readme">
+      <created>1669307118257</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1669307118257</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="COWEB-19 изменил readme" />
+    <option name="LAST_COMMIT_MESSAGE" value="COWEB-19 изменил readme" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/presentation_maker/src/View/HeaderPanel/HeaderPanel.tsx</url>
+          <line>3</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
