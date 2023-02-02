@@ -5,6 +5,7 @@ import {store} from "../../store";
 import {presentationActions} from "../../store/presentation";
 import {createCircle, createRectangle, createTriangle} from "../../models/shapes";
 import {addImage} from "../../models/images.";
+import {addText} from "../../models/texts";
 
 enum ButtonsType  {
 	ADD_SLIDE = 'ADD_SLIDE',
@@ -36,6 +37,9 @@ export function HeaderPanel() {
 		}
 		if (type === ButtonsType.ADD_PIC) {
 			store.dispatch(presentationActions.addFig({element: addImage('https://www.coweb.ru/upload/coweb.png')}))
+		}
+		if (type === ButtonsType.ADD_TEXT) {
+			store.dispatch(presentationActions.addFig({element: addText('Введите свой текст')}))
 		}
 	}
 
