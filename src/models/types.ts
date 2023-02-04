@@ -35,7 +35,6 @@ export type GraphObj = {
 export type TextElem = Block & Text
 export type ImageElem = Block & Image
 export type GraphElem = Block & GraphObj
-
 export type SlideElement = TextElem|ImageElem|GraphElem;
 
 export type Slide = {
@@ -52,7 +51,7 @@ export type Presentation = {
     active_slide: string,
     active_slide_index: number,
     selected_elements: Array<string>,
-    data: Array<Slide>
+    data: Slide[]
 }
 
 export type History = Array<Presentation>

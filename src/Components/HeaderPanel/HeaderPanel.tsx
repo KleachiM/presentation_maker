@@ -6,6 +6,7 @@ import {presentationActions} from "../../store/presentation";
 import {createCircle, createRectangle, createTriangle} from "../../models/shapes";
 import {addImage} from "../../models/images.";
 import {addText} from "../../models/texts";
+import {addSlide} from "../../models/slide";
 
 enum ButtonsType  {
 	ADD_SLIDE = 'ADD_SLIDE',
@@ -23,9 +24,9 @@ enum ButtonsType  {
 
 export function HeaderPanel() {
 	const onItemClick = (type: ButtonsType) => {
-/*		if (type === ButtonsType.ADD_SLIDE) {
-			store.dispatch(presentationActions.addSlide({}))
-		}*/
+		if (type === ButtonsType.ADD_SLIDE) {
+			store.dispatch(presentationActions.addSlide({element: addSlide()}))
+		}
 		if (type === ButtonsType.RECTANGLE) {
 			store.dispatch(presentationActions.addFig({element: createRectangle('red')}))
 		}

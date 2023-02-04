@@ -14,19 +14,5 @@ export const pres: Presentation = {
 			scale: 100,
 			slide_data: []
 		},
-		{
-			id: '1w',
-			background: 'blue',
-			transition_style: 'standart',
-			scale: 100,
-			slide_data: []
-		},
-		{
-			id: '2',
-			background: 'blue',
-			transition_style: 'standart',
-			scale: 100,
-			slide_data: []
-		}
 	]
 };
