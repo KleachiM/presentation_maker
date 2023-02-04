@@ -2,8 +2,8 @@ import React from 'react';
 import {Presentation} from '../../../models/types';
 import {connect} from 'react-redux';
 import './PresentationName.css';
-import {AppState, store} from "../../../store";
-import {presentationActions} from "../../../store/presentation";
+import {AppState, store} from '../../../store';
+import {presentationActions} from '../../../store/presentation';
 
 type PresentationNameProps = {
 	title: string

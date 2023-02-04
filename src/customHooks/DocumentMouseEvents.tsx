@@ -1,12 +1,15 @@
-import {useEffect} from 'react';
-import {store} from "../store";
-import {presentationActions} from "../store/presentation";
+import {RefObject, useEffect} from 'react';
+import {store} from '../store';
+import {presentationActions} from '../store/presentation';
 
-export function useMouseDownDocumentHandler() {
+type mouseDownDocPayload = {
+	elem_ref?: RefObject<SVGSVGElement>
+}
+export function useMouseDownDocumentHandler(payload: mouseDownDocPayload) {
 	useEffect(() => {
-		document.addEventListener('mousedown', mouseDownHandler);
+		payload.elem_ref?.current?.addEventListener('mousedown', mouseDownHandler);
 		return () => {
-			document.removeEventListener('mousedown', mouseDownHandler);
+			payload.elem_ref?.current?.removeEventListener('mousedown', mouseDownHandler);
 		};
 	});
 

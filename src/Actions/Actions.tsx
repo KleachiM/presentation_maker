@@ -1,13 +1,13 @@
 import {Point, Slide, StateTypes} from '../models/types';
-import {presentationActions} from "../store/presentation";
+import {presentationActions} from '../store/presentation';
 
 
 export function setElemPosition(slide: Slide, elemId: string, newPos: Point) {
 	return presentationActions.setElemPosition({
-			slide: slide,
-			elemId: elemId,
-			newPos: newPos
-	})
+		slide: slide,
+		elemId: elemId,
+		newPos: newPos
+	});
 }
 
 export function setElemSize(slide: Slide, elemId: string, newWidth: number, newHeight: number) {
@@ -16,7 +16,7 @@ export function setElemSize(slide: Slide, elemId: string, newWidth: number, newH
 		elemId: elemId,
 		newWidth: newWidth,
 		newHeight: newHeight
-	})
+	});
 }
 
 export function changePresentationTitle(newTitle: string) {

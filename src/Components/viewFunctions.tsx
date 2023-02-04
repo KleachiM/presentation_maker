@@ -9,12 +9,15 @@ type slideElementsPayload = {
     mainSvgRef?: RefObject<SVGSVGElement>,
 	selectedElements?: Array<string>,
 	slidePos: number,
+	displayMode?: string,
+
 }
 export function getSlideSvgElements(payload: slideElementsPayload): Array<JSX.Element> {
 	const svgSlideElements: Array<JSX.Element> = [];
 	const slideElements = {...payload.slide.slide_data};
 	const mainSvgRef = payload.mainSvgRef;
 	const slide = payload.slide;
+	const displayMode = payload.displayMode;
 
 	for (let i = 0; i < payload.slide.slide_data.length; i++) {
 		svgSlideElements.push(
@@ -27,6 +30,7 @@ export function getSlideSvgElements(payload: slideElementsPayload): Array<JSX.El
 					selectedElements={payload.selectedElements}
 					slideDataPos={i}
 					slidePos={payload.slidePos}
+					displayMode={displayMode}
 				/>
 				: <MiniSlideBlock key={slideElements[i].id} block={slideElements[i]}/>
 		);

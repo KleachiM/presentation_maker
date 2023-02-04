@@ -1,17 +1,17 @@
 import {Dispatch, RefObject, SetStateAction, useEffect} from 'react';
 import {Point, Slide} from '../models/types';
 import {setElemPosition, setElemSize} from '../Actions/Actions';
-import {store} from "../store";
-import {presentationActions} from "../store/presentation";
-import {log} from "util";
+import {store} from '../store';
+import {presentationActions} from '../store/presentation';
 
 type DNDElemProps = {
-    elemRef: RefObject<SVGElement | null>,
-    setPos: Dispatch<SetStateAction<Point>>,
-    currPos: Point,
-    mainSvgRef: RefObject<SVGSVGElement> | undefined,
-    slide: Slide,
-    elemId: string
+	elemRef: RefObject<SVGElement | null>,
+	setPos: Dispatch<SetStateAction<Point>>,
+	currPos: Point,
+	mainSvgRef: RefObject<SVGSVGElement> | undefined,
+	slide: Slide,
+	elemId: string,
+	displayMode: string | undefined
 }
 export function useDragAndDropElement(props: DNDElemProps) {
 	const slide = props.slide;
@@ -19,10 +19,12 @@ export function useDragAndDropElement(props: DNDElemProps) {
 	let startPos = {x: 0, y: 0};
 	let newPos = {x: 0, y: 0};
 	let delta = {x: 0, y: 0};
-	console.log(props)
+	console.log(props);
 	useEffect(() => {
-		props.elemRef.current?.addEventListener('mousedown', mouseDownHandl);
-		return () => props.elemRef.current?.removeEventListener('mousedown', mouseDownHandl);
+		if (props.displayMode === 'presentation') {
+			props.elemRef.current?.addEventListener('mousedown', mouseDownHandl);
+			return () => props.elemRef.current?.removeEventListener('mousedown', mouseDownHandl);
+		}
 	});
 
 	const mouseDownHandl = (event: MouseEvent) => {
@@ -69,7 +71,8 @@ type ResizeElemProps = {
 	setPos: Dispatch<SetStateAction<Point>>,
 	setSize: Dispatch<SetStateAction<{width: number, height: number}>>,
 	slide: Slide,
-	mainSvgRef: RefObject<SVGSVGElement> | undefined
+	mainSvgRef: RefObject<SVGSVGElement> | undefined,
+	displayMode: string | undefined
 }
 
 export function useResizeElement(props: ResizeElemProps) {

@@ -4,12 +4,14 @@ import {getSlideSvgElements} from '../viewFunctions';
 import {connect} from 'react-redux';
 import {useRef} from 'react';
 import React from 'react';
-import {AppState} from "../../store";
+import {AppState} from '../../store';
+import {useMouseDownDocumentHandler} from '../../customHooks/DocumentMouseEvents';
 
 type MainSlideProps = {
-    slides: Array<Slide>,
-    activeSlide: string,
-	selectedElements: Array<string>
+	slides: Array<Slide>,
+	activeSlide: string,
+	selectedElements: Array<string>,
+	displayMode: string
 }
 
 export function MainSlide(props: MainSlideProps) {
@@ -22,11 +24,13 @@ export function MainSlide(props: MainSlideProps) {
 		mainSvgRef: mainSlideSvgRef,
 		selectedElements: props.selectedElements,
 		slidePos: index,
+		displayMode: props.displayMode
 	});
+	useMouseDownDocumentHandler({elem_ref: mainSlideSvgRef});
 	return <div className="mainSlide">
 		<svg xmlns="http://www.w3.org/2000/svg" version="1.1"
-			x="0" y="0" width="100%" height="100%"
-			ref={mainSlideSvgRef}
+			 x="0" y="0" width="100%" height="100%"
+			 ref={mainSlideSvgRef}
 		>
 			{slideSvgElements}
 		</svg>
@@ -37,7 +41,8 @@ function mapStateToProps(state: AppState) {
 	return {
 		slides: state.presentation.data,
 		activeSlide: state.presentation.active_slide,
-		selectedElements: state.presentation.selected_elements
+		selectedElements: state.presentation.selected_elements,
+		displayMode: state.presentation.display_mode
 	};
 }
 export default connect(mapStateToProps)(MainSlide);
