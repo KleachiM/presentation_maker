@@ -1,4 +1,4 @@
-import {Slide} from './types';
+import {Slide, Presentation} from './types';
 
 export function addSlide(): Slide  {
 	return {

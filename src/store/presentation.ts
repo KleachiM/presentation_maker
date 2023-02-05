@@ -54,8 +54,10 @@ const presentation = createSlice({
 		addFig: (state, action: PayloadAction<{element: SlideElement}>) => {
 			state.data[state.active_slide_index].slide_data.push(action.payload.element);
 		},
-		addSlide: (state, action: PayloadAction<{element: Slide}>) => {
+		addSlide: (state, action: PayloadAction<{ element: Slide }>) => {
 			state.data.push(action.payload.element);
+			state.active_slide_index++;
+			state.active_slide = state.data[state.active_slide_index].id;
 		},
 		zIndexUp: (state, action: PayloadAction) => {
 			const active_elem_index = state.data[state.active_slide_index].slide_data.map(i => i.id).indexOf(state.selected_elements[0]);
@@ -82,6 +84,16 @@ const presentation = createSlice({
 			if (action.payload === 'presentation') {
 				state.display_mode = 'presentation';
 			}
+		},
+		deleteActiveSlide: (state) => {
+			const index = state.active_slide_index;
+			if (state.data.length !== 1) {
+				index > 0 ?
+					state.active_slide_index-- :
+					state.active_slide_index++;
+				state.active_slide = state.data[state.active_slide_index].id;
+				state.data.splice(index, 1);
+			} else state.data[0].slide_data = [];
 		}
 	}
 });
