@@ -44,7 +44,7 @@ export function HeaderPanel() {
 			store.dispatch(presentationActions.addFig({element: addText('Введите свой текст')}));
 		}
 		if (type === ButtonsType.PREVIEW) {
-			store.dispatch(presentationActions.setDisplayModeView());
+			store.dispatch(presentationActions.setDisplayMode('preview'));
 		}
 	};
 

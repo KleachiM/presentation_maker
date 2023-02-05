@@ -20,7 +20,7 @@ const presentation = createSlice({
 	initialState,
 	reducers: {
 		setTitle: (state, action: PayloadAction<string>) => ({...state, title: action.payload}),
-		setDisplayMode: (state, action: PayloadAction<string>) => ({...state, display_mode: action.payload}),
+		// setDisplayMode: (state, action: PayloadAction<string>) => ({...state, display_mode: action.payload}),
 		setActiveSlide: (state, action: PayloadAction<string>) => ({...state, active_slide: action.payload}),
 		setActiveSlideIndex: (state, action: PayloadAction<number>) => ({...state, active_slide_index: action.payload}),
 		setSelectedElements: (state, action: PayloadAction<string[]>) => ({
@@ -72,10 +72,16 @@ const presentation = createSlice({
 				[slide_data[active_elem_index - 1], slide_data[active_elem_index]] = [slide_data[active_elem_index], slide_data[active_elem_index - 1]];
 			}
 		},
-		setDisplayModeView: (state) => {
-			state.display_mode = 'preview';
-			const elem = document.querySelector('.mainSlide');
-			elem?.requestFullscreen();
+		setDisplayMode: (state, action: PayloadAction<string>) => {
+			if (action.payload === 'preview' && state.display_mode !== 'preview') {
+				state.display_mode = 'preview';
+				state.selected_elements = [];
+				const elem = document.querySelector('.mainSlide');
+				elem?.requestFullscreen();
+			}
+			if (action.payload === 'presentation') {
+				state.display_mode = 'presentation';
+			}
 		}
 	}
 });
