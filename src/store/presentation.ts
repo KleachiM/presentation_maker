@@ -29,30 +29,30 @@ const presentation = createSlice({
 			selected_elements: action.payload
 		}),
 		setData: (state, action: PayloadAction<Slide[]>) => ({...state, data: action.payload}),
-		setElemPosition:(state, action: PayloadAction<{
-            slide: Slide,
-            elemId: string,
-            newPos: Point
-        }>) => {
+		setElemPosition: (state, action: PayloadAction<{
+			slide: Slide,
+			elemId: string,
+			newPos: Point
+		}>) => {
 			const editedSlideIndex = state.data.findIndex(s => s.id === action.payload.slide.id);
 			const editedSlide = state.data[editedSlideIndex];
 			const editedItem = editedSlide.slide_data.find((i) => i.id === action.payload.elemId);
-            editedItem!.position = action.payload.newPos;
+			editedItem!.position = action.payload.newPos;
 		},
 
 		setElementSize: (state, action: PayloadAction<{
-            slide: Slide,
-            elemId: string,
-            newWidth: number,
-            newHeight: number
-        }>) => {
+			slide: Slide,
+			elemId: string,
+			newWidth: number,
+			newHeight: number
+		}>) => {
 			const editedSlideIndex = state.data.findIndex(s => s.id === action.payload.slide.id);
 			const editedSlide = state.data[editedSlideIndex];
 			const editedItem = editedSlide.slide_data.find((i) => i.id === action.payload.elemId);
-            editedItem!.width = action.payload.newWidth;
-            editedItem!.height = action.payload.newHeight;
+			editedItem!.width = action.payload.newWidth;
+			editedItem!.height = action.payload.newHeight;
 		},
-		addFig: (state, action: PayloadAction<{element: SlideElement}>) => {
+		addFig: (state, action: PayloadAction<{ element: SlideElement }>) => {
 			state.data[state.active_slide_index].slide_data.push(action.payload.element);
 		},
 		addSlide: (state, action: PayloadAction<{ element: Slide }>) => {
@@ -65,7 +65,7 @@ const presentation = createSlice({
 			const slide_data = state.data[state.active_slide_index].slide_data;
 			const slide_data_len = slide_data.length;
 			if (slide_data.length > 0 && active_elem_index < slide_data_len) {
-				[slide_data[active_elem_index], slide_data[active_elem_index + 1]] = [slide_data[active_elem_index+1], slide_data[active_elem_index]];
+				[slide_data[active_elem_index], slide_data[active_elem_index + 1]] = [slide_data[active_elem_index + 1], slide_data[active_elem_index]];
 			}
 		},
 		zIndexDown: (state) => {
@@ -95,7 +95,12 @@ const presentation = createSlice({
 				state.active_slide = state.data[state.active_slide_index].id;
 				state.data.splice(index, 1);
 			} else state.data[0].slide_data = [];
-		}
+		},
+		deleteSelectedElements: (state) => {
+			state.selected_elements.forEach((element) => {
+				state.data[state.active_slide_index].slide_data = state.data[state.active_slide_index].slide_data.filter(item => item.id !== element);
+			});
+		},
 	}
 });
 

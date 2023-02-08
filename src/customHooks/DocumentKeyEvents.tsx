@@ -19,6 +19,12 @@ export function useDocumentKeyHandler() {
 					store.dispatch(presentationActions.setActiveSlideIndex(activeSlideIndex + 1));
 			}
 		};
+		const onDeleteKeyEventsHandler = (event: KeyboardEvent) => {
+			if (event.key === 'Delete') {
+				store.dispatch(presentationActions.deleteSelectedElements());
+			}
+		};
+		document.addEventListener('keydown', onDeleteKeyEventsHandler);
 		const onFullScreenChange = () => {
 			if (document.fullscreen) {
 				store.dispatch(presentationActions.setDisplayMode('preview'));
