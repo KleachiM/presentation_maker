@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e431678d-1705-4842-b7f9-41f437d6daec" name="Changes" comment="oshayev добавил функцию удаления слайдов, убрал из линтера проверку отступов">
-      <change afterPath="$PROJECT_DIR$/presentation_maker/src/models/keyborad.ts" afterDir="false" />
+    <list default="true" id="e431678d-1705-4842-b7f9-41f437d6daec" name="Changes" comment="oshayev добавил кнопку удаления слайдов, привязал к ней функцию">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/presentation_maker" beforeDir="false" afterPath="$PROJECT_DIR$/presentation_maker" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/presentation_maker/src/Components/Miniatures/Miniatures.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/presentation_maker/src/Components/Miniatures/Miniatures.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation_maker/src/customHooks/DocumentKeyEvents.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/presentation_maker/src/customHooks/DocumentKeyEvents.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation_maker/src/store/presentation.ts" beforeDir="false" afterPath="$PROJECT_DIR$/presentation_maker/src/store/presentation.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,19 +34,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/PresentationMaker",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "nodejs_package_manager_path": "yarn",
-    "ts.external.directory.path": "C:\\PresentationMaker\\presentation_maker\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/PresentationMaker&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\PresentationMaker\\presentation_maker\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\PresentationMaker\presentation_maker\src\models\CommonFunctions\SupportFunctions" />
@@ -78,6 +77,7 @@
       <workItem from="1675371544109" duration="7747000" />
       <workItem from="1675508141743" duration="3619000" />
       <workItem from="1675621960438" duration="10010000" />
+      <workItem from="1675889779682" duration="3143000" />
     </task>
     <task id="LOCAL-00001" summary="COWEB-19 изменил readme">
       <created>1669307118257</created>
@@ -121,7 +121,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675634840286</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="oshayev добавил кнопку удаления слайдов, привязал к ней функцию">
+      <created>1675890033664</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1675890033664</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -162,7 +169,8 @@
     <MESSAGE value="master добавил возможность добавления текста" />
     <MESSAGE value="oshayev реализовал добавление слайдов" />
     <MESSAGE value="oshayev добавил функцию удаления слайдов, убрал из линтера проверку отступов" />
-    <option name="LAST_COMMIT_MESSAGE" value="oshayev добавил функцию удаления слайдов, убрал из линтера проверку отступов" />
+    <MESSAGE value="oshayev добавил кнопку удаления слайдов, привязал к ней функцию" />
+    <option name="LAST_COMMIT_MESSAGE" value="oshayev добавил кнопку удаления слайдов, привязал к ней функцию" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -171,12 +179,6 @@
           <url>file://$PROJECT_DIR$/presentation_maker/src/View/HeaderPanel/HeaderPanel.tsx</url>
           <line>3</line>
           <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/presentation_maker/src/App.tsx</url>
-          <line>6</line>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="9" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
