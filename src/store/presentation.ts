@@ -1,6 +1,7 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 import {Point, Slide, SlideElement} from '../models/types';
 import {pres} from '../models/data';
+import React, { KeyboardEvent } from 'react';
 import {setElemPosition} from '../Actions/Actions';
 import MiniSlides from '../Components/Miniatures/Minislides/MiniSlides';
 

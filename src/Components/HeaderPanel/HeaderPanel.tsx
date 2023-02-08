@@ -10,6 +10,7 @@ import {addSlide} from '../../models/slide';
 
 enum ButtonsType  {
 	ADD_SLIDE = 'ADD_SLIDE',
+	DELETE_SLIDE = 'DELETE_SLIDE',
 	UNDO = 'UNDO',
 	REDO = 'REDO',
 	CIRCLE = 'CIRCLE',
@@ -28,6 +29,10 @@ export function HeaderPanel() {
 		if (type === ButtonsType.ADD_SLIDE) {
 			store.dispatch(presentationActions.addSlide({element: addSlide()}));
 		}
+		if (type === ButtonsType.DELETE_SLIDE) {
+			store.dispatch(presentationActions.deleteActiveSlide());
+		}
+
 		if (type === ButtonsType.RECTANGLE) {
 			store.dispatch(presentationActions.addFig({element: createRectangle('red')}));
 		}
@@ -52,6 +57,7 @@ export function HeaderPanel() {
 		<PresentationName />
 		<div>
 			<span className="material-symbols-outlined click-button" onClick={() => onItemClick(ButtonsType.ADD_SLIDE)}>add</span>
+			<span className="material-symbols-outlined click-button" onClick={() => onItemClick(ButtonsType.DELETE_SLIDE)}>remove</span>
 			<span className="material-symbols-outlined click-button" onClick={() => onItemClick(ButtonsType.UNDO)}>undo</span>
 			<span className="material-symbols-outlined click-button" onClick={() => onItemClick(ButtonsType.REDO)}>redo</span>
 			<span className="material-symbols-outlined click-button" onClick={() => onItemClick(ButtonsType.RECTANGLE)}>rectangle</span>
