@@ -14,7 +14,7 @@ export function useMouseDownDocumentHandler(payload: mouseDownDocPayload) {
 	});
 
 	const mouseDownHandler = (event: MouseEvent) => {
-		if (!event.defaultPrevented) {
+		if (event.shiftKey && !event.defaultPrevented) {
 			store.dispatch(presentationActions.setSelectedElements([]));
 		}
 	};

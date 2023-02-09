@@ -23,6 +23,18 @@ const presentation = createSlice({
 		setTitle: (state, action: PayloadAction<string>) => ({...state, title: action.payload}),
 		// setDisplayMode: (state, action: PayloadAction<string>) => ({...state, display_mode: action.payload}),
 		setActiveSlide: (state, action: PayloadAction<string>) => ({...state, active_slide: action.payload}),
+		setActiveSlideUp: (state) => {
+			if (state.data.length !== 1 && state.active_slide_index !== 0) {
+				state.active_slide_index--;
+				state.active_slide = state.data[state.active_slide_index].id;
+			}
+		},
+		setActiveSlideDown:(state) => {
+			if (state.data.length !== 1) {
+				state.active_slide_index++;
+				state.active_slide = state.data[state.active_slide_index].id;
+			}
+		},
 		setActiveSlideIndex: (state, action: PayloadAction<number>) => ({...state, active_slide_index: action.payload}),
 		setSelectedElements: (state, action: PayloadAction<string[]>) => ({
 			...state,
