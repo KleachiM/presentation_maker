@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e431678d-1705-4842-b7f9-41f437d6daec" name="Changes" comment="oshayev добавил кнопку удаления слайдов, привязал к ней функцию">
+    <list default="true" id="e431678d-1705-4842-b7f9-41f437d6daec" name="Changes" comment="oshayev добавил удаление элементов со слайда">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation_maker" beforeDir="false" afterPath="$PROJECT_DIR$/presentation_maker" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/presentation_maker/src/customHooks/DocumentKeyEvents.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/presentation_maker/src/customHooks/DocumentKeyEvents.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation_maker/src/customHooks/DocumentMouseEvents.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/presentation_maker/src/customHooks/DocumentMouseEvents.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/presentation_maker/src/store/presentation.ts" beforeDir="false" afterPath="$PROJECT_DIR$/presentation_maker/src/store/presentation.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -77,7 +79,7 @@
       <workItem from="1675371544109" duration="7747000" />
       <workItem from="1675508141743" duration="3619000" />
       <workItem from="1675621960438" duration="10010000" />
-      <workItem from="1675889779682" duration="3143000" />
+      <workItem from="1675889779682" duration="10510000" />
     </task>
     <task id="LOCAL-00001" summary="COWEB-19 изменил readme">
       <created>1669307118257</created>
@@ -128,7 +130,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675890033664</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="oshayev добавил удаление элементов со слайда">
+      <created>1675893138216</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1675893138216</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -170,7 +179,8 @@
     <MESSAGE value="oshayev реализовал добавление слайдов" />
     <MESSAGE value="oshayev добавил функцию удаления слайдов, убрал из линтера проверку отступов" />
     <MESSAGE value="oshayev добавил кнопку удаления слайдов, привязал к ней функцию" />
-    <option name="LAST_COMMIT_MESSAGE" value="oshayev добавил кнопку удаления слайдов, привязал к ней функцию" />
+    <MESSAGE value="oshayev добавил удаление элементов со слайда" />
+    <option name="LAST_COMMIT_MESSAGE" value="oshayev добавил удаление элементов со слайда" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
