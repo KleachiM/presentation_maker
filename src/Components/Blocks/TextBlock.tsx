@@ -32,7 +32,7 @@ export function TextBlock(props: TextElemProps) {
 				}}
 				onBlur={(event) => {
 					if (!props.isSmallElem) {
-						console.log(`new text: ${event.target.value}`);
+						// console.log(`new text: ${event.target.value}`);
 					}
 				}}
 				style={{
@@ -40,9 +40,10 @@ export function TextBlock(props: TextElemProps) {
 					outline: 'unset',
 					width: props.textElem.width,
 					height: props.textElem.height,
-					color: 'balck',
-					// background: 'black',
-					fontSize: props.textElem.font_size / scale
+					color: props.textElem.font_color,
+					fontSize: props.textElem.font_size / scale,
+					backgroundColor: 'transparent',
+					fontStyle: props.textElem.font_style
 				}}
 			/>
 		</foreignObject>

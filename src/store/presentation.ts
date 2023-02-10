@@ -1,20 +1,10 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
-import {Point, Slide, SlideElement} from '../models/types';
+import {Point, Presentation, Slide, SlideElement, TextElem} from '../models/types';
 import {pres} from '../models/data';
-import React, { KeyboardEvent } from 'react';
-import {setElemPosition} from '../Actions/Actions';
-import MiniSlides from '../Components/Miniatures/Minislides/MiniSlides';
+import {walkOnSlideElements} from "../utils/utils";
+import {TOOLS} from "../const/tools";
 
-type initialStateType = {
-    display_mode: string;
-    data: Slide[];
-    active_slide: string;
-    active_slide_index: number;
-    title: string;
-    selected_elements: string[];
-}
-
-const initialState: initialStateType = pres;
+const initialState: Presentation = pres;
 
 const presentation = createSlice({
 	name: 'presentation',
@@ -36,10 +26,16 @@ const presentation = createSlice({
 			}
 		},
 		setActiveSlideIndex: (state, action: PayloadAction<number>) => ({...state, active_slide_index: action.payload}),
-		setSelectedElements: (state, action: PayloadAction<string[]>) => ({
-			...state,
-			selected_elements: action.payload
-		}),
+		setSelectedElements: (state, action: PayloadAction<string[]>) => {
+			state.selected_elements = action.payload;
+			// debugger
+			state.currentTool = null;
+			if (action.payload.length) {
+				walkOnSlideElements<TextElem>(state, el => {
+					action.payload.includes(el.id) && (state.currentTool = TOOLS.ADD_TEXT);
+				}, "text")
+			}
+		},
 		setData: (state, action: PayloadAction<Slide[]>) => ({...state, data: action.payload}),
 		setElemPosition: (state, action: PayloadAction<{
 			slide: Slide,
@@ -66,6 +62,7 @@ const presentation = createSlice({
 		},
 		addFig: (state, action: PayloadAction<{ element: SlideElement }>) => {
 			state.data[state.active_slide_index].slide_data.push(action.payload.element);
+			state.selected_elements = [action.payload.element.id]
 		},
 		addSlide: (state, action: PayloadAction<{ element: Slide }>) => {
 			state.data.push(action.payload.element);
@@ -99,20 +96,66 @@ const presentation = createSlice({
 			}
 		},
 		deleteActiveSlide: (state) => {
-			const index = state.active_slide_index;
-			if (state.data.length !== 1) {
-				index > 0 ?
-					state.active_slide_index-- :
-					state.active_slide_index++;
-				state.active_slide = state.data[state.active_slide_index].id;
-				state.data.splice(index, 1);
-			} else state.data[0].slide_data = [];
+			if (state.data.length > 1) {
+				state.data.splice(state.active_slide_index, 1);
+				state.active_slide = state.data[state.active_slide_index].id
+			} else {
+				state.data[0].slide_data = []
+			}
 		},
 		deleteSelectedElements: (state) => {
 			state.selected_elements.forEach((element) => {
 				state.data[state.active_slide_index].slide_data = state.data[state.active_slide_index].slide_data.filter(item => item.id !== element);
 			});
 		},
+		setColor: (state, action: PayloadAction<string>) => {
+			const currentSlide = state.data[state.active_slide_index];
+			if (state.selected_elements.length) {
+				const selected = state.selected_elements;
+				currentSlide.slide_data.forEach((s) => {
+					if (selected.includes(s.id)) {
+						if (s.type === 'graphic') {
+							s.color = action.payload
+						} else if (s.type === 'text') {
+							s.font_color = action.payload
+						}
+					}
+				})
+			} else {
+				currentSlide.background = action.payload;
+			}
+		},
+		setFontSize: (state, action: PayloadAction<number>) => {
+			if (state.selected_elements.length) {
+				walkOnSlideElements<TextElem>(state, (el) => {
+					el.font_size = action.payload
+				}, "text")
+			}
+		},
+		upFontSize: (state) => {
+			if (state.selected_elements.length) {
+				walkOnSlideElements<TextElem>(state, (el) => {
+					el.font_size = parseInt(String(el.font_size)) + 1
+				}, "text")
+			}
+		},
+		downFontSize: (state) => {
+			if (state.selected_elements.length) {
+				walkOnSlideElements<TextElem>(state, (el) => {
+					el.font_size = parseInt(String(el.font_size)) - 1
+				}, "text")
+			}
+		},
+		toggleItalic: (state, action: PayloadAction) => {
+			if (state.selected_elements.length) {
+				walkOnSlideElements<TextElem>(state, (el) => {
+					el.font_style = el.font_style === 'italic' ? 'normal' : 'italic';
+				}, "text")
+			}
+		},
+		setCurrentTool: (state, action: PayloadAction<TOOLS>) => {
+			state.currentTool = action.payload
+		}
 	}
 });
 

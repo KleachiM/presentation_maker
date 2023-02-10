@@ -15,6 +15,7 @@ export function MiniSlides(props: SlidesProps) {
 	return <>
 		{props.slides.map((slide, index) => {
 			return <div key={slide.id}
+				style={{backgroundColor: slide.background}}
 				className={slide.id === props.activeSlideId ? 'slide active_mini_slide' : 'slide'}
 				onMouseDown={() => {
 					store.dispatch(presentationActions.setActiveSlide(slide.id));
@@ -29,7 +30,7 @@ export function MiniSlides(props: SlidesProps) {
 const mapDispathToProps = {setActiveSlide: presentationActions.setActiveSlide};
 
 const mapStateToProps = (state: AppState) => {
-	console.log(state);
+//	console.log(state);
 	return {
 		slides: state.presentation.data,
 		activeSlideId: state.presentation.active_slide

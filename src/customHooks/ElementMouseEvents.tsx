@@ -19,7 +19,7 @@ export function useDragAndDropElement(props: DNDElemProps) {
 	let startPos = {x: 0, y: 0};
 	let newPos = {x: 0, y: 0};
 	let delta = {x: 0, y: 0};
-	console.log(props);
+	// console.log(props);
 	useEffect(() => {
 		if (props.displayMode === 'presentation') {
 			props.elemRef.current?.addEventListener('mousedown', mouseDownHandl);
@@ -32,8 +32,11 @@ export function useDragAndDropElement(props: DNDElemProps) {
 			x: event.pageX,
 			y: event.pageY
 		};
-
-		store.dispatch(presentationActions.setSelectedElements([elemId]));
+        console.log(event);
+		const payload = event.shiftKey
+			? [...store.getState().presentation.selected_elements, elemId]
+			: [elemId]
+		store.dispatch(presentationActions.setSelectedElements(payload));
 		document.addEventListener('mousemove', mouseMoveHandl);
 		document.addEventListener('mouseup', mouseUpHandl);
 

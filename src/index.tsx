@@ -20,7 +20,6 @@ root.render(
 
 );
 
-reportWebVitals();
 function configureStore(mainReducer: (state: import('./models/types').Presentation | undefined, action: any) => import('./models/types').Presentation) {
 	throw new Error('Function not implemented.');
 }

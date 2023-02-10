@@ -53,7 +53,7 @@ export function MainSlideBlock(props: SlideBlockProps) {
 	};
 
 
-	let svgElem: JSX.Element = <rect/>;
+	let svgElem: JSX.Element = <rect style={{backgroundColor: props.slide.background}}/>;
 	let selectionBorder = <></>;
 	if (props.selectedElements?.includes(props.block.id)) {
 		selectionBorder = <SelectionBorder

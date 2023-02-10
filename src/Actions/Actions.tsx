@@ -20,7 +20,7 @@ export function setElemSize(slide: Slide, elemId: string, newWidth: number, newH
 }
 
 export function changePresentationTitle(newTitle: string) {
-	console.log(`in action newTitle: ${newTitle}`);
+//	console.log(`in action newTitle: ${newTitle}`);
 	return {
 		type: StateTypes.CHANGE_TITLE,
 		payload: newTitle

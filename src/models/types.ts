@@ -1,3 +1,5 @@
+import {TOOLS} from "../Components/HeaderPanel/HeaderPanel";
+
 export type Point = {
     x: number,
     y: number
@@ -51,7 +53,8 @@ export type Presentation = {
     active_slide: string,
     active_slide_index: number,
     selected_elements: Array<string>,
-    data: Slide[]
+    data: Slide[],
+    currentTool: TOOLS | null;
 }
 
 export type History = Array<Presentation>

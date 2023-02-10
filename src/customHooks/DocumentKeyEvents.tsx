@@ -5,14 +5,16 @@ import {useEffect, useReducer, useState} from 'react';
 export function useDocumentKeyHandler() {
 	useEffect(() => {
 		const onKeyDownHandler = (event: KeyboardEvent) => {
+			if (event.key === 'Delete') {
+				store.dispatch(presentationActions.deleteSelectedElements());
+			}
+			if (store.getState().presentation.selected_elements.length) return;
+
 			if (event.key === 'ArrowUp' || event.key === 'ArrowLeft') {
 				store.dispatch(presentationActions.setActiveSlideUp());
 			}
 			if (event.key === 'ArrowDown' || event.key === 'ArrowRight') {
 				store.dispatch(presentationActions.setActiveSlideDown());
-			}
-			if (event.key === 'Delete') {
-				store.dispatch(presentationActions.deleteSelectedElements());
 			}
 		};
 		document.addEventListener('keydown', onKeyDownHandler);

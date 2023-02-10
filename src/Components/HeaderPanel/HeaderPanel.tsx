@@ -1,77 +1,118 @@
 import './HeaderPanel.css';
-import React from 'react';
+import React, {useState} from 'react';
 import PresentationName from './PresentationName/PresentationName';
-import {store} from '../../store';
+import {AppState, store} from '../../store';
 import {presentationActions} from '../../store/presentation';
 import {createCircle, createRectangle, createTriangle} from '../../models/shapes';
 import {addImage} from '../../models/images.';
 import {addText} from '../../models/texts';
-import {addSlide} from '../../models/slide';
-
-enum ButtonsType  {
-	ADD_SLIDE = 'ADD_SLIDE',
-	DELETE_SLIDE = 'DELETE_SLIDE',
-	UNDO = 'UNDO',
-	REDO = 'REDO',
-	CIRCLE = 'CIRCLE',
-	TRIANGLE = 'TRIANGLE',
-	RECTANGLE = 'RECTANGLE',
-	ADD_TEXT = 'ADD_TEXT',
-	ADD_PIC = 'ADD_PIC',
-	SAVE = 'SAVE',
-	UPLOAD = 'UPLOAD',
-	DO_PDF = 'DO_PDF',
-	PREVIEW = 'PREVIEW'
-}
+import {createSlide} from '../../models/slide';
+import {debounce, getBase64} from "../../utils/utils";
+import {useSelector} from "react-redux";
+import {TOOLS} from "../../const/tools";
 
 export function HeaderPanel() {
-	const onItemClick = (type: ButtonsType) => {
-		if (type === ButtonsType.ADD_SLIDE) {
-			store.dispatch(presentationActions.addSlide({element: addSlide()}));
+	const currentTool = useSelector((s: AppState) => s.presentation.currentTool)
+	const currentEl = useSelector((s: AppState) => s.presentation.data[s.presentation.active_slide_index].slide_data.find(el => s.presentation.selected_elements.includes(el.id)))
+	const onItemClick = (type: TOOLS) => {
+		store.dispatch(presentationActions.setCurrentTool(type));
+		if (type === TOOLS.ADD_SLIDE) {
+			store.dispatch(presentationActions.addSlide({element: createSlide()}));
 		}
-		if (type === ButtonsType.DELETE_SLIDE) {
+		if (type === TOOLS.DELETE_SLIDE) {
 			store.dispatch(presentationActions.deleteActiveSlide());
 		}
 
-		if (type === ButtonsType.RECTANGLE) {
+		if (type === TOOLS.RECTANGLE) {
 			store.dispatch(presentationActions.addFig({element: createRectangle('red')}));
 		}
-		if (type === ButtonsType.TRIANGLE) {
+		if (type === TOOLS.TRIANGLE) {
 			store.dispatch(presentationActions.addFig({element: createTriangle('blue')}));
 		}
-		if (type === ButtonsType.CIRCLE) {
+		if (type === TOOLS.CIRCLE) {
 			store.dispatch(presentationActions.addFig({element: createCircle('black')}));
 		}
-		if (type === ButtonsType.ADD_PIC) {
-			store.dispatch(presentationActions.addFig({element: addImage('https://www.coweb.ru/upload/coweb.png')}));
-		}
-		if (type === ButtonsType.ADD_TEXT) {
+		if (type === TOOLS.ADD_TEXT) {
 			store.dispatch(presentationActions.addFig({element: addText('Введите свой текст')}));
 		}
-		if (type === ButtonsType.PREVIEW) {
+		if (type === TOOLS.PREVIEW) {
 			store.dispatch(presentationActions.setDisplayMode('preview'));
 		}
 	};
 
+	const isActiveTextTool = currentTool === TOOLS.ADD_TEXT
+	const onChangeColor = debounce((ev:  React.ChangeEvent<HTMLInputElement>) => {
+		store.dispatch(presentationActions.setColor(ev.target.value));
+	}, 100)
+
 	return <div className="header-panel">
 		<PresentationName />
-		<div>
-			<span className="material-symbols-outlined click-button" onClick={() => onItemClick(ButtonsType.ADD_SLIDE)}>add</span>
-			<span className="material-symbols-outlined click-button" onClick={() => onItemClick(ButtonsType.DELETE_SLIDE)}>remove</span>
-			<span className="material-symbols-outlined click-button" onClick={() => onItemClick(ButtonsType.UNDO)}>undo</span>
-			<span className="material-symbols-outlined click-button" onClick={() => onItemClick(ButtonsType.REDO)}>redo</span>
-			<span className="material-symbols-outlined click-button" onClick={() => onItemClick(ButtonsType.RECTANGLE)}>rectangle</span>
-			<span className="material-symbols-outlined click-button" onClick={() => onItemClick(ButtonsType.TRIANGLE)}>change_history</span>
-			<span className="material-symbols-outlined click-button" onClick={() => onItemClick(ButtonsType.CIRCLE)}>circle</span>
-			<span className="material-symbols-outlined click-button" onClick={() => onItemClick(ButtonsType.ADD_PIC)}>image</span>
-			<span className="material-symbols-outlined click-button" onClick={() => onItemClick(ButtonsType.ADD_TEXT)}>feed</span>
-			<span className="material-symbols-outlined click-button" onClick={() => onItemClick(ButtonsType.DO_PDF)}>picture_as_pdf</span>
-			<span className="material-symbols-outlined click-button" onClick={() => onItemClick(ButtonsType.SAVE)}>save</span>
-			<span className="material-symbols-outlined click-button" onClick={() => onItemClick(ButtonsType.UPLOAD)}>upload</span>
-			<span className="material-symbols-outlined click-button" onClick={() => onItemClick(ButtonsType.PREVIEW)}>preview</span>
+		<div className="buttons-panel">
+			<span className="material-symbols-outlined click-button" onClick={() => onItemClick(TOOLS.ADD_SLIDE)}>add</span>
+			<span className="material-symbols-outlined click-button" onClick={() => onItemClick(TOOLS.DELETE_SLIDE)}>remove</span>
+			<span className="material-symbols-outlined click-button" onClick={() => onItemClick(TOOLS.UNDO)}>undo</span>
+			<span className="material-symbols-outlined click-button" onClick={() => onItemClick(TOOLS.REDO)}>redo</span>
+			<span className="material-symbols-outlined click-button" onClick={() => onItemClick(TOOLS.RECTANGLE)}>rectangle</span>
+			<span className="material-symbols-outlined click-button" onClick={() => onItemClick(TOOLS.TRIANGLE)}>change_history</span>
+			<span className="material-symbols-outlined click-button" onClick={() => onItemClick(TOOLS.CIRCLE)}>circle</span>
+			<label htmlFor="select_pic">
+				<span className="material-symbols-outlined click-button">image</span>
+			</label>
+			<span
+				className={`material-symbols-outlined click-button ${isActiveTextTool ? 'active-tool' : ''}`}
+				onClick={() => onItemClick(TOOLS.ADD_TEXT)}
+			>
+				text_fields
+			</span>
+			{isActiveTextTool && (
+				<div className="text-edit-panel buttons-panel">
+					<input
+						className="font-size-input"
+						type="number"
+						onChange={(ev) => {
+							store.dispatch(presentationActions.setFontSize(ev.target.value as unknown as number))
+						}}
+						// @ts-ignore
+						value={currentEl?.font_size as number}
+					/>
+					<span className="material-symbols-outlined click-button" onClick={() => {
+						store.dispatch(presentationActions.upFontSize())
+					}}>text_increase</span>
+					<span className="material-symbols-outlined click-button" onClick={() => {
+						store.dispatch(presentationActions.downFontSize())
+					}}>text_decrease</span>
+					<span className="material-symbols-outlined click-button" onClick={() => {
+						store.dispatch(presentationActions.toggleItalic())
+					}}>format_italic</span>
+				</div>
+			)}
+			<span className="material-symbols-outlined click-button" onClick={() => onItemClick(TOOLS.DO_PDF)}>picture_as_pdf</span>
+			<span className="material-symbols-outlined click-button" onClick={() => onItemClick(TOOLS.SAVE)}>save</span>
+			<span className="material-symbols-outlined click-button" onClick={() => onItemClick(TOOLS.UPLOAD)}>upload</span>
+			<span className="material-symbols-outlined click-button" onClick={() => onItemClick(TOOLS.PREVIEW)}>preview</span>
 			<span className="material-symbols-outlined click-button" onClick={zIndexDownHandler}>move_selection_down</span>
 			<span className="material-symbols-outlined click-button" onClick={zIndexUpHandler}>move_selection_up</span>
+			<label htmlFor="select_color">
+				<span className="material-symbols-outlined click-button">format_color_fill</span>
+			</label>
 		</div>
+
+		<input
+			type={"file"}
+			id="select_pic"
+			onChange={async (ev) => {
+				const res = await getBase64((ev.target.files || [])[0] as File);
+				store.dispatch(presentationActions.addFig({element: addImage(res)}));
+			}}
+			style={{display: 'none'}}
+		/>
+
+		<input
+			type={"color"}
+			id="select_color"
+			onChange={onChangeColor}
+			style={{display: 'none'}}
+		/>
 	</div>;
 }
 

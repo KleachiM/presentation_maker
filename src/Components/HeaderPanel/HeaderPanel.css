@@ -3,19 +3,44 @@
     flex-direction: column;
     align-items: flex-start;
     text-align: center;
-    font-family: SansSerif;
+    font-family: SansSerif, sans-serif;
     font-size: 3vw;
-    border-style: double;
-    margin: 0 20px;
-    border: none;
+    border-style: none;
+    margin: 0 20px 10px;
 }
 
 .header-panel .click-button {
     cursor: pointer;
     border-radius: 8px;
     margin-right: 10px;
+    height: 24px;
+    padding: 5px;
 }
-.header-panel .click-button:hover {
+.header-panel .click-button:hover, .active-tool {
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.buttons-panel {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    user-select: none;
+}
+
+.header-panel .text-edit-panel {
+    height: 24px;
+    padding: 5px;
+    border: gray dotted 1px;
+    border-radius: 5px;
+}
+
+
+.font-size-input {
+    width: 50px;
+    margin-right: 10px;
+}
+
+.header-panel .text-edit-panel input {
+    display: inline-block;
 }
 
