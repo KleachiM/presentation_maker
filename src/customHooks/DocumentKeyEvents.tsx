@@ -1,11 +1,11 @@
 import {store} from '../store';
 import {presentationActions} from '../store/presentation';
-import {useEffect, useReducer, useState} from 'react';
+import {useEffect} from 'react';
 
 export function useDocumentKeyHandler() {
 	useEffect(() => {
 		const onKeyDownHandler = (event: KeyboardEvent) => {
-			if (event.key === 'Delete') {
+			if (event.key === 'Delete')  {
 				store.dispatch(presentationActions.deleteSelectedElements());
 			}
 			if (store.getState().presentation.selected_elements.length) return;

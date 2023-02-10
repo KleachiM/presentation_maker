@@ -1,8 +1,8 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 import {Point, Presentation, Slide, SlideElement, TextElem} from '../models/types';
 import {pres} from '../models/data';
-import {walkOnSlideElements} from "../utils/utils";
-import {TOOLS} from "../const/tools";
+import {walkOnSlideElements} from '../utils/utils';
+import {TOOLS} from '../const/tools';
 
 const initialState: Presentation = pres;
 
@@ -33,7 +33,7 @@ const presentation = createSlice({
 			if (action.payload.length) {
 				walkOnSlideElements<TextElem>(state, el => {
 					action.payload.includes(el.id) && (state.currentTool = TOOLS.ADD_TEXT);
-				}, "text")
+				}, 'text');
 			}
 		},
 		setData: (state, action: PayloadAction<Slide[]>) => ({...state, data: action.payload}),
@@ -62,7 +62,7 @@ const presentation = createSlice({
 		},
 		addFig: (state, action: PayloadAction<{ element: SlideElement }>) => {
 			state.data[state.active_slide_index].slide_data.push(action.payload.element);
-			state.selected_elements = [action.payload.element.id]
+			state.selected_elements = [action.payload.element.id];
 		},
 		addSlide: (state, action: PayloadAction<{ element: Slide }>) => {
 			state.data.push(action.payload.element);
@@ -98,9 +98,9 @@ const presentation = createSlice({
 		deleteActiveSlide: (state) => {
 			if (state.data.length > 1) {
 				state.data.splice(state.active_slide_index, 1);
-				state.active_slide = state.data[state.active_slide_index].id
+				state.active_slide = state.data[state.active_slide_index].id;
 			} else {
-				state.data[0].slide_data = []
+				state.data[0].slide_data = [];
 			}
 		},
 		deleteSelectedElements: (state) => {
@@ -115,12 +115,12 @@ const presentation = createSlice({
 				currentSlide.slide_data.forEach((s) => {
 					if (selected.includes(s.id)) {
 						if (s.type === 'graphic') {
-							s.color = action.payload
+							s.color = action.payload;
 						} else if (s.type === 'text') {
-							s.font_color = action.payload
+							s.font_color = action.payload;
 						}
 					}
-				})
+				});
 			} else {
 				currentSlide.background = action.payload;
 			}
@@ -128,33 +128,40 @@ const presentation = createSlice({
 		setFontSize: (state, action: PayloadAction<number>) => {
 			if (state.selected_elements.length) {
 				walkOnSlideElements<TextElem>(state, (el) => {
-					el.font_size = action.payload
-				}, "text")
+					el.font_size = action.payload;
+				}, 'text');
 			}
 		},
 		upFontSize: (state) => {
 			if (state.selected_elements.length) {
 				walkOnSlideElements<TextElem>(state, (el) => {
-					el.font_size = parseInt(String(el.font_size)) + 1
-				}, "text")
+					el.font_size = parseInt(String(el.font_size)) + 1;
+				}, 'text');
 			}
 		},
 		downFontSize: (state) => {
 			if (state.selected_elements.length) {
 				walkOnSlideElements<TextElem>(state, (el) => {
-					el.font_size = parseInt(String(el.font_size)) - 1
-				}, "text")
+					el.font_size = parseInt(String(el.font_size)) - 1;
+				}, 'text');
 			}
 		},
 		toggleItalic: (state, action: PayloadAction) => {
 			if (state.selected_elements.length) {
 				walkOnSlideElements<TextElem>(state, (el) => {
 					el.font_style = el.font_style === 'italic' ? 'normal' : 'italic';
-				}, "text")
+				}, 'text');
+			}
+		},
+		toggleBold: (state, action: PayloadAction) => {
+			if (state.selected_elements.length) {
+				walkOnSlideElements<TextElem>(state, (el) => {
+					el.font_style = el.font_style === 'normal' ? 'bold' : 'normal';
+				}, 'text');
 			}
 		},
 		setCurrentTool: (state, action: PayloadAction<TOOLS>) => {
-			state.currentTool = action.payload
+			state.currentTool = action.payload;
 		}
 	}
 });

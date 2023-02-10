@@ -50,15 +50,3 @@ export function TextBlock(props: TextElemProps) {
 		{props.selectionBorder}
 	</>;
 }
-
-// <text
-// 	ref={props.elem_ref}
-// 	x={props.textElem.position.x / scale}
-// 	y={props.textElem.position.y / scale}
-// 	fontSize={props.textElem.font_size / scale}
-// 	fontFamily={props.textElem.font_family}
-// 	fill={props.textElem.font_color}
-// 	fontWeight={props.textElem.font_weight / scale}
-// 	fontStyle={props.textElem.font_style}
-// >{props.textElem.text_value}</text>
-// {props.selectionBorder}

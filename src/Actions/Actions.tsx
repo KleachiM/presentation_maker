@@ -1,6 +1,5 @@
-import {Point, Slide, StateTypes} from '../models/types';
+import {Point, Slide} from '../models/types';
 import {presentationActions} from '../store/presentation';
-
 
 export function setElemPosition(slide: Slide, elemId: string, newPos: Point) {
 	return presentationActions.setElemPosition({
@@ -17,12 +16,4 @@ export function setElemSize(slide: Slide, elemId: string, newWidth: number, newH
 		newWidth: newWidth,
 		newHeight: newHeight
 	});
-}
-
-export function changePresentationTitle(newTitle: string) {
-//	console.log(`in action newTitle: ${newTitle}`);
-	return {
-		type: StateTypes.CHANGE_TITLE,
-		payload: newTitle
-	};
 }

@@ -7,13 +7,13 @@ import {createCircle, createRectangle, createTriangle} from '../../models/shapes
 import {addImage} from '../../models/images.';
 import {addText} from '../../models/texts';
 import {createSlide} from '../../models/slide';
-import {debounce, getBase64} from "../../utils/utils";
-import {useSelector} from "react-redux";
-import {TOOLS} from "../../const/tools";
+import {debounce, getBase64} from '../../utils/utils';
+import {useSelector} from 'react-redux';
+import {TOOLS} from '../../const/tools';
 
 export function HeaderPanel() {
-	const currentTool = useSelector((s: AppState) => s.presentation.currentTool)
-	const currentEl = useSelector((s: AppState) => s.presentation.data[s.presentation.active_slide_index].slide_data.find(el => s.presentation.selected_elements.includes(el.id)))
+	const currentTool = useSelector((s: AppState) => s.presentation.currentTool);
+	const currentEl = useSelector((s: AppState) => s.presentation.data[s.presentation.active_slide_index].slide_data.find(el => s.presentation.selected_elements.includes(el.id)));
 	const onItemClick = (type: TOOLS) => {
 		store.dispatch(presentationActions.setCurrentTool(type));
 		if (type === TOOLS.ADD_SLIDE) {
@@ -22,7 +22,6 @@ export function HeaderPanel() {
 		if (type === TOOLS.DELETE_SLIDE) {
 			store.dispatch(presentationActions.deleteActiveSlide());
 		}
-
 		if (type === TOOLS.RECTANGLE) {
 			store.dispatch(presentationActions.addFig({element: createRectangle('red')}));
 		}
@@ -40,10 +39,10 @@ export function HeaderPanel() {
 		}
 	};
 
-	const isActiveTextTool = currentTool === TOOLS.ADD_TEXT
+	const isActiveTextTool = currentTool === TOOLS.ADD_TEXT;
 	const onChangeColor = debounce((ev:  React.ChangeEvent<HTMLInputElement>) => {
 		store.dispatch(presentationActions.setColor(ev.target.value));
-	}, 100)
+	}, 100);
 
 	return <div className="header-panel">
 		<PresentationName />
@@ -70,20 +69,24 @@ export function HeaderPanel() {
 						className="font-size-input"
 						type="number"
 						onChange={(ev) => {
-							store.dispatch(presentationActions.setFontSize(ev.target.value as unknown as number))
+							store.dispatch(presentationActions.setFontSize(ev.target.value as unknown as number));
 						}}
+						// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 						// @ts-ignore
 						value={currentEl?.font_size as number}
 					/>
 					<span className="material-symbols-outlined click-button" onClick={() => {
-						store.dispatch(presentationActions.upFontSize())
+						store.dispatch(presentationActions.upFontSize());
 					}}>text_increase</span>
 					<span className="material-symbols-outlined click-button" onClick={() => {
-						store.dispatch(presentationActions.downFontSize())
+						store.dispatch(presentationActions.downFontSize());
 					}}>text_decrease</span>
 					<span className="material-symbols-outlined click-button" onClick={() => {
-						store.dispatch(presentationActions.toggleItalic())
+						store.dispatch(presentationActions.toggleItalic());
 					}}>format_italic</span>
+					<span className="material-symbols-outlined click-button" onClick={() => {
+						store.dispatch(presentationActions.toggleBold());
+					}}>format_bold</span>
 				</div>
 			)}
 			<span className="material-symbols-outlined click-button" onClick={() => onItemClick(TOOLS.DO_PDF)}>picture_as_pdf</span>
@@ -96,9 +99,8 @@ export function HeaderPanel() {
 				<span className="material-symbols-outlined click-button">format_color_fill</span>
 			</label>
 		</div>
-
 		<input
-			type={"file"}
+			type={'file'}
 			id="select_pic"
 			onChange={async (ev) => {
 				const res = await getBase64((ev.target.files || [])[0] as File);
@@ -106,9 +108,8 @@ export function HeaderPanel() {
 			}}
 			style={{display: 'none'}}
 		/>
-
 		<input
-			type={"color"}
+			type={'color'}
 			id="select_color"
 			onChange={onChangeColor}
 			style={{display: 'none'}}

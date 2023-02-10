@@ -16,7 +16,7 @@ export function addText(
 		font_color: 'black',
 		font_family: 'Tahoma',
 		font_weight: 5,
-		font_style: 'bold',
+		font_style: 'normal',
 		position: params.position || {x: 20, y: 20},
 		width: params.width || 120,
 		height: params.height || 120

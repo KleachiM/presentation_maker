@@ -7,7 +7,6 @@ export enum TOOLS  {
     TRIANGLE = 'TRIANGLE',
     RECTANGLE = 'RECTANGLE',
     ADD_TEXT = 'ADD_TEXT',
-    ADD_PIC = 'ADD_PIC',
     SAVE = 'SAVE',
     UPLOAD = 'UPLOAD',
     DO_PDF = 'DO_PDF',

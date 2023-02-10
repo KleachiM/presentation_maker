@@ -31,45 +31,6 @@ export function SelectionBorder(props: SelBorderProps) {
 	const botRightPointX = props.elemPos.x + props.elemWidth + bordThick;
 	const botRightPointY = props.elemPos.y + props.elemHeight + bordThick;
 
-	// if (props.elemType === 'text') {
-	// 	const elemWidth = props.elemRef?.current?.getBoundingClientRect().width;
-	// 	const elemHeight = props.elemRef?.current?.getBoundingClientRect().height;
-	//
-	// 	topLeftPointX = props.elemPos.x - bordThick;
-	// 	topLeftPointY = elemHeight? props.elemPos.y - elemHeight / 1.5 : 0;
-	//
-	// 	topRightPointX = elemWidth? props.elemPos.x + elemWidth + bordThick : 0;
-	// 	topRightPointY = elemHeight? props.elemPos.y - elemHeight / 1.5 : 0;
-	//
-	// 	botLeftPointY = elemHeight? props.elemPos.y - elemHeight / 1.5 + elemHeight: 0;
-	//
-	// 	botRightPointX = elemWidth? props.elemPos.x + elemWidth + bordThick : 0;
-	// 	botRightPointY = elemHeight? props.elemPos.y - elemHeight / 1.5 + elemHeight: 0;
-	//
-	// 	rect = <rect
-	// 		x={props.elemPos.x - bordThick}
-	// 		y={elemHeight? props.elemPos.y - elemHeight / 1.5 : 0}
-	// 		width={elemWidth? elemWidth + bordThick * 2 : 0}
-	// 		height={elemHeight? elemHeight : 0}
-	// 		stroke='black'
-	// 		strokeWidth='1'
-	// 		strokeDasharray='10, 7'
-	// 		fill='none'
-	// 	/>;
-	// }
-	// else {
-	// 	rect = <rect
-	// 		x={props.elemPos.x - bordThick}
-	// 		y={props.elemPos.y - bordThick}
-	// 		width={props.elemWidth + bordThick * 2}
-	// 		height={props.elemHeight + bordThick * 2}
-	// 		stroke='black'
-	// 		strokeWidth='1'
-	// 		strokeDasharray='10, 7'
-	// 		fill='none'
-	// 	/>;
-	// }
-
 	rect = <rect
 		x={props.elemPos.x - bordThick}
 		y={props.elemPos.y - bordThick}

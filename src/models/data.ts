@@ -11,7 +11,7 @@ export const pres: Presentation = {
 			id: 'slide0',
 			background: 'white',
 			transition_style: 'standart',
-			scale: 300,
+			scale: 100,
 			slide_data: []
 		},
 	],

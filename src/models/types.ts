@@ -1,4 +1,4 @@
-import {TOOLS} from "../Components/HeaderPanel/HeaderPanel";
+import {TOOLS} from '../const/tools';
 
 export type Point = {
     x: number,
@@ -55,16 +55,4 @@ export type Presentation = {
     selected_elements: Array<string>,
     data: Slide[],
     currentTool: TOOLS | null;
-}
-
-export type History = Array<Presentation>
-
-export type ActionType = any
-
-export enum StateTypes {
-    SET_ACTIVE_SLIDE,
-    SET_ELEM_CHECKED,
-    SET_ELEM_NEW_POS,
-    SET_ELEM_NEW_SIZE,
-    CHANGE_TITLE
 }

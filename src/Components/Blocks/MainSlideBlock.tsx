@@ -6,7 +6,6 @@ import {useDragAndDropElement, useResizeElement} from '../../customHooks/Element
 import {GraphElem, ImageElem, Slide, TextElem} from '../../models/types';
 import {SelectionBorder} from './SelectionBorder';
 import {deepClone} from '../../utils/utils';
-import {presentationActions} from '../../store/presentation';
 
 type SlideBlockProps = {
 	block: TextElem | ImageElem | GraphElem,
