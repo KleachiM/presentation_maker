@@ -1,27 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e431678d-1705-4842-b7f9-41f437d6daec" name="Changes" comment="oshayev добавил перемещение слайдов по стрелочкам">
-      <change afterPath="$PROJECT_DIR$/presentation_maker/src/const/tools.ts" afterDir="false" />
+    <list default="true" id="e431678d-1705-4842-b7f9-41f437d6daec" name="Changes" comment="oshayev добавил выделение нескольких слайдов, палитру, параметры текста">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/presentation_maker/src/Actions/Actions.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/presentation_maker/src/Actions/Actions.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/presentation_maker/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/presentation_maker/src/App.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/presentation_maker/src/Components/Blocks/MainSlideBlock.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/presentation_maker/src/Components/Blocks/MainSlideBlock.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation_maker/src/Components/Blocks/SelectionBorder.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/presentation_maker/src/Components/Blocks/SelectionBorder.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/presentation_maker/src/Components/Blocks/TextBlock.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/presentation_maker/src/Components/Blocks/TextBlock.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/presentation_maker/src/Components/HeaderPanel/HeaderPanel.css" beforeDir="false" afterPath="$PROJECT_DIR$/presentation_maker/src/Components/HeaderPanel/HeaderPanel.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/presentation_maker/src/Components/HeaderPanel/HeaderPanel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/presentation_maker/src/Components/HeaderPanel/HeaderPanel.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/presentation_maker/src/Components/MainSlide/MainSlide.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/presentation_maker/src/Components/MainSlide/MainSlide.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/presentation_maker/src/Components/Miniatures/Miniatures.css" beforeDir="false" afterPath="$PROJECT_DIR$/presentation_maker/src/Components/Miniatures/Miniatures.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/presentation_maker/src/Components/Miniatures/Minislides/MiniSlides.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/presentation_maker/src/Components/Miniatures/Minislides/MiniSlides.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation_maker/src/Components/HeaderPanel/PresentationName/PresentationName.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/presentation_maker/src/Components/HeaderPanel/PresentationName/PresentationName.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation_maker/src/const/tools.ts" beforeDir="false" afterPath="$PROJECT_DIR$/presentation_maker/src/const/tools.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/presentation_maker/src/customHooks/DocumentKeyEvents.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/presentation_maker/src/customHooks/DocumentKeyEvents.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/presentation_maker/src/customHooks/DocumentMouseEvents.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/presentation_maker/src/customHooks/DocumentMouseEvents.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/presentation_maker/src/customHooks/ElementMouseEvents.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/presentation_maker/src/customHooks/ElementMouseEvents.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/presentation_maker/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/presentation_maker/src/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/presentation_maker/src/models/data.ts" beforeDir="false" afterPath="$PROJECT_DIR$/presentation_maker/src/models/data.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/presentation_maker/src/models/slide.ts" beforeDir="false" afterPath="$PROJECT_DIR$/presentation_maker/src/models/slide.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation_maker/src/models/texts.ts" beforeDir="false" afterPath="$PROJECT_DIR$/presentation_maker/src/models/texts.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/presentation_maker/src/models/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/presentation_maker/src/models/types.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation_maker/src/store/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/presentation_maker/src/store/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/presentation_maker/src/store/presentation.ts" beforeDir="false" afterPath="$PROJECT_DIR$/presentation_maker/src/store/presentation.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/presentation_maker/src/utils/utils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/presentation_maker/src/utils/utils.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,6 +89,7 @@
       <workItem from="1675508141743" duration="3619000" />
       <workItem from="1675621960438" duration="10010000" />
       <workItem from="1675889779682" duration="28765000" />
+      <workItem from="1676005237865" duration="6209000" />
     </task>
     <task id="LOCAL-00001" summary="COWEB-19 изменил readme">
       <created>1669307118257</created>
@@ -159,7 +154,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675965524614</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="oshayev добавил выделение нескольких слайдов, палитру, параметры текста">
+      <created>1676005296424</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1676005296424</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -203,7 +205,8 @@
     <MESSAGE value="oshayev добавил кнопку удаления слайдов, привязал к ней функцию" />
     <MESSAGE value="oshayev добавил удаление элементов со слайда" />
     <MESSAGE value="oshayev добавил перемещение слайдов по стрелочкам" />
-    <option name="LAST_COMMIT_MESSAGE" value="oshayev добавил перемещение слайдов по стрелочкам" />
+    <MESSAGE value="oshayev добавил выделение нескольких слайдов, палитру, параметры текста" />
+    <option name="LAST_COMMIT_MESSAGE" value="oshayev добавил выделение нескольких слайдов, палитру, параметры текста" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
