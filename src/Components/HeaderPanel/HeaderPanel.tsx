@@ -55,7 +55,9 @@ export function HeaderPanel() {
 			<span className="material-symbols-outlined click-button" onClick={() => onItemClick(TOOLS.TRIANGLE)}>change_history</span>
 			<span className="material-symbols-outlined click-button" onClick={() => onItemClick(TOOLS.CIRCLE)}>circle</span>
 			<label htmlFor="select_pic">
+				<div className="buttons-panel">
 				<span className="material-symbols-outlined click-button">image</span>
+				</div>
 			</label>
 			<span
 				className={`material-symbols-outlined click-button ${isActiveTextTool ? 'active-tool' : ''}`}
@@ -96,7 +98,9 @@ export function HeaderPanel() {
 			<span className="material-symbols-outlined click-button" onClick={zIndexDownHandler}>move_selection_down</span>
 			<span className="material-symbols-outlined click-button" onClick={zIndexUpHandler}>move_selection_up</span>
 			<label htmlFor="select_color">
+				<div className="buttons-panel">
 				<span className="material-symbols-outlined click-button">format_color_fill</span>
+				</div>
 			</label>
 		</div>
 		<input

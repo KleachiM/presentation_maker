@@ -25,7 +25,7 @@ export function walkOnSlideElements<T = SlideElement['type']>(state: AppState['p
 		}
 	});
 }
-
+/* eslint-disable */
 export function debounce<T extends Function>(cb: T, wait = 20) {
 	let h: NodeJS.Timeout;
 	const callable = (...args: any) => {
