@@ -89,6 +89,9 @@ export function HeaderPanel() {
 					<span className="material-symbols-outlined click-button" onClick={() => {
 						store.dispatch(presentationActions.toggleBold());
 					}}>format_bold</span>
+					<span className="material-symbols-outlined click-button" onClick={() => {
+						store.dispatch(presentationActions.toggleUnderlined());
+					}}>format_underlined</span>
 				</div>
 			)}
 			<span className="material-symbols-outlined click-button" onClick={() => onItemClick(TOOLS.DO_PDF)}>picture_as_pdf</span>

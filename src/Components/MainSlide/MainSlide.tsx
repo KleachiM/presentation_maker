@@ -1,4 +1,4 @@
-import {Presentation, Slide} from '../../models/types';
+import {Slide} from '../../models/types';
 import './MainSlide.css';
 import {getSlideSvgElements} from '../viewFunctions';
 import {connect} from 'react-redux';

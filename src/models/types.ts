@@ -20,6 +20,7 @@ export type Text = {
     font_family: string,
     font_weight: number,
     font_style: string,
+    text_decoration: string
 }
 
 export type Image = {

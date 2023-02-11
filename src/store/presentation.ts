@@ -151,22 +151,30 @@ const presentation = createSlice({
 			if (state.selected_elements.length) {
 				const currentSlide = state.data[state.active_slide_index];
 				currentSlide.slide_data.forEach((s) => {
-					if (state.selected_elements.includes(s.id)) {
-						if (s.type === 'text') {
-							s.font_style = s.font_style === 'italic' ? 'normal' : 'italic';
-						}
+					if (state.selected_elements.includes(s.id) && s.type === 'text') {
+						s.font_style = s.font_style === 'italic' ? 'normal' : 'italic';
 					}
 				});
 			}
 		},
 		toggleBold: (state, action: PayloadAction) => {
 			if (state.selected_elements.length) {
-				walkOnSlideElements<TextElem>(state, (el) => {
-					if (el.id === state.last_selected_text_id)
-					{
-						el.font_style = el.font_style === 'normal' ? 'bold' : 'normal';
+				const currentSlide = state.data[state.active_slide_index];
+				currentSlide.slide_data.forEach((s) => {
+					if (state.selected_elements.includes(s.id) && s.type === 'text') {
+						s.font_weight = s.font_weight === 400 ? 700 : 400;
 					}
-				}, 'text');
+				});
+			}
+		},
+		toggleUnderlined: (state, action: PayloadAction) => {
+			if (state.selected_elements.length) {
+				const currentSlide = state.data[state.active_slide_index];
+				currentSlide.slide_data.forEach((s) => {
+					if (state.selected_elements.includes(s.id) && s.type === 'text') {
+						s.text_decoration = s.text_decoration === 'none' ? 'underline' : 'none';
+					}
+				});
 			}
 		},
 		setCurrentTool: (state, action: PayloadAction<TOOLS>) => {
@@ -175,10 +183,8 @@ const presentation = createSlice({
 		setText: (state, action: PayloadAction<string>) => {
 			const currentSlide = state.data[state.active_slide_index];
 			currentSlide.slide_data.forEach((s) => {
-				if (s.id === state.last_selected_text_id) {
-					if (s.type === 'text') {
-						s.text_value = action.payload;
-					}
+				if (s.id === state.last_selected_text_id && s.type === 'text') {
+					s.text_value = action.payload;
 				}
 			});
 		},
