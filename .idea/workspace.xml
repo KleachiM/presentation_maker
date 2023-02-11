@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e431678d-1705-4842-b7f9-41f437d6daec" name="Changes" comment="oshayev пофиксил удаление слайдов">
+    <list default="true" id="e431678d-1705-4842-b7f9-41f437d6daec" name="Changes" comment="oshayev пофиксил элемент текст, Теперь текст сохраняется">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/presentation_maker/src/Components/Blocks/TextBlock.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/presentation_maker/src/Components/Blocks/TextBlock.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/presentation_maker/src/customHooks/ElementMouseEvents.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/presentation_maker/src/customHooks/ElementMouseEvents.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/presentation_maker/src/models/data.ts" beforeDir="false" afterPath="$PROJECT_DIR$/presentation_maker/src/models/data.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/presentation_maker/src/models/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/presentation_maker/src/models/types.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation_maker" beforeDir="false" afterPath="$PROJECT_DIR$/presentation_maker" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/presentation_maker/src/store/presentation.ts" beforeDir="false" afterPath="$PROJECT_DIR$/presentation_maker/src/store/presentation.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -84,7 +81,7 @@
       <workItem from="1675621960438" duration="10010000" />
       <workItem from="1675889779682" duration="28765000" />
       <workItem from="1676005237865" duration="6489000" />
-      <workItem from="1676103672206" duration="11017000" />
+      <workItem from="1676103672206" duration="11760000" />
     </task>
     <task id="LOCAL-00001" summary="COWEB-19 изменил readme">
       <created>1669307118257</created>
@@ -177,7 +174,14 @@
       <option name="project" value="LOCAL" />
       <updated>1676119469667</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="oshayev пофиксил элемент текст, Теперь текст сохраняется">
+      <created>1676149804957</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1676149804957</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -225,7 +229,8 @@
     <MESSAGE value="oshayev поправил кавычки и удалил лишний закомментированный код" />
     <MESSAGE value="oshayev выровнял иконки краски и картинки" />
     <MESSAGE value="oshayev пофиксил удаление слайдов" />
-    <option name="LAST_COMMIT_MESSAGE" value="oshayev пофиксил удаление слайдов" />
+    <MESSAGE value="oshayev пофиксил элемент текст, Теперь текст сохраняется" />
+    <option name="LAST_COMMIT_MESSAGE" value="oshayev пофиксил элемент текст, Теперь текст сохраняется" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
