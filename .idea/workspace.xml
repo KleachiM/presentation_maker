@@ -1,19 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e431678d-1705-4842-b7f9-41f437d6daec" name="Changes" comment="oshayev пофиксил italic - можно назначать отдельному тексту и группе">
+    <list default="true" id="e431678d-1705-4842-b7f9-41f437d6daec" name="Changes" comment="oshayev добавил underline и bold">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/presentation_maker/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/presentation_maker/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/presentation_maker/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/presentation_maker/src/App.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/presentation_maker/src/Components/Blocks/TextBlock.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/presentation_maker/src/Components/Blocks/TextBlock.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/presentation_maker/src/Components/HeaderPanel/HeaderPanel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/presentation_maker/src/Components/HeaderPanel/HeaderPanel.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/presentation_maker/src/Components/MainSlide/MainSlide.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/presentation_maker/src/Components/MainSlide/MainSlide.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/presentation_maker/src/Components/Miniatures/Minislides/MiniSlides.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/presentation_maker/src/Components/Miniatures/Minislides/MiniSlides.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/presentation_maker/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/presentation_maker/src/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/presentation_maker/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/presentation_maker/src/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/presentation_maker/src/models/texts.ts" beforeDir="false" afterPath="$PROJECT_DIR$/presentation_maker/src/models/texts.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/presentation_maker/src/models/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/presentation_maker/src/models/types.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/presentation_maker/src/store/presentation.ts" beforeDir="false" afterPath="$PROJECT_DIR$/presentation_maker/src/store/presentation.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,7 +82,7 @@
       <workItem from="1675621960438" duration="10010000" />
       <workItem from="1675889779682" duration="28765000" />
       <workItem from="1676005237865" duration="6489000" />
-      <workItem from="1676103672206" duration="20090000" />
+      <workItem from="1676103672206" duration="20778000" />
     </task>
     <task id="LOCAL-00001" summary="COWEB-19 изменил readme">
       <created>1669307118257</created>
@@ -199,7 +189,14 @@
       <option name="project" value="LOCAL" />
       <updated>1676150587868</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="oshayev добавил underline и bold">
+      <created>1676159256944</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1676159256944</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -249,7 +246,8 @@
     <MESSAGE value="oshayev пофиксил удаление слайдов" />
     <MESSAGE value="oshayev пофиксил элемент текст, Теперь текст сохраняется" />
     <MESSAGE value="oshayev пофиксил italic - можно назначать отдельному тексту и группе" />
-    <option name="LAST_COMMIT_MESSAGE" value="oshayev пофиксил italic - можно назначать отдельному тексту и группе" />
+    <MESSAGE value="oshayev добавил underline и bold" />
+    <option name="LAST_COMMIT_MESSAGE" value="oshayev добавил underline и bold" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
