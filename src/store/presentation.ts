@@ -149,15 +149,23 @@ const presentation = createSlice({
 		},
 		toggleItalic: (state, action: PayloadAction) => {
 			if (state.selected_elements.length) {
-				walkOnSlideElements<TextElem>(state, (el) => {
-					el.font_style = el.font_style === 'italic' ? 'normal' : 'italic';
-				}, 'text');
+				const currentSlide = state.data[state.active_slide_index];
+				currentSlide.slide_data.forEach((s) => {
+					if (state.selected_elements.includes(s.id)) {
+						if (s.type === 'text') {
+							s.font_style = s.font_style === 'italic' ? 'normal' : 'italic';
+						}
+					}
+				});
 			}
 		},
 		toggleBold: (state, action: PayloadAction) => {
 			if (state.selected_elements.length) {
 				walkOnSlideElements<TextElem>(state, (el) => {
-					el.font_style = el.font_style === 'normal' ? 'bold' : 'normal';
+					if (el.id === state.last_selected_text_id)
+					{
+						el.font_style = el.font_style === 'normal' ? 'bold' : 'normal';
+					}
 				}, 'text');
 			}
 		},
@@ -166,7 +174,6 @@ const presentation = createSlice({
 		},
 		setText: (state, action: PayloadAction<string>) => {
 			const currentSlide = state.data[state.active_slide_index];
-			const selected = state.selected_elements;
 			currentSlide.slide_data.forEach((s) => {
 				if (s.id === state.last_selected_text_id) {
 					if (s.type === 'text') {
