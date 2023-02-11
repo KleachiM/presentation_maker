@@ -28,11 +28,11 @@ const presentation = createSlice({
 		setActiveSlideIndex: (state, action: PayloadAction<number>) => ({...state, active_slide_index: action.payload}),
 		setSelectedElements: (state, action: PayloadAction<string[]>) => {
 			state.selected_elements = action.payload;
-			// debugger
 			state.currentTool = null;
 			if (action.payload.length) {
 				walkOnSlideElements<TextElem>(state, el => {
 					action.payload.includes(el.id) && (state.currentTool = TOOLS.ADD_TEXT);
+					state.last_selected_text_id = el.id;
 				}, 'text');
 			}
 		},
@@ -163,7 +163,18 @@ const presentation = createSlice({
 		},
 		setCurrentTool: (state, action: PayloadAction<TOOLS>) => {
 			state.currentTool = action.payload;
-		}
+		},
+		setText: (state, action: PayloadAction<string>) => {
+			const currentSlide = state.data[state.active_slide_index];
+			const selected = state.selected_elements;
+			currentSlide.slide_data.forEach((s) => {
+				if (s.id === state.last_selected_text_id) {
+					if (s.type === 'text') {
+						s.text_value = action.payload;
+					}
+				}
+			});
+		},
 	}
 });
 

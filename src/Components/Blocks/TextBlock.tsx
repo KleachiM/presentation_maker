@@ -1,6 +1,8 @@
 import React, {RefObject} from 'react';
 import {TextElem} from '../../models/types';
 import {getScaleValue} from '../viewFunctions';
+import {store} from '../../store';
+import {presentationActions} from '../../store/presentation';
 
 type TextElemProps = {
     textElem: TextElem,
@@ -32,7 +34,7 @@ export function TextBlock(props: TextElemProps) {
 				}}
 				onBlur={(event) => {
 					if (!props.isSmallElem) {
-						// console.log(`new text: ${event.target.value}`);
+						store.dispatch(presentationActions.setText(event.target.value));
 					}
 				}}
 				style={{
@@ -43,7 +45,7 @@ export function TextBlock(props: TextElemProps) {
 					color: props.textElem.font_color,
 					fontSize: props.textElem.font_size / scale,
 					backgroundColor: 'transparent',
-					fontStyle: props.textElem.font_style
+					fontStyle: props.textElem.font_style,
 				}}
 			/>
 		</foreignObject>

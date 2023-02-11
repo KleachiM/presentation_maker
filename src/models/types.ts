@@ -54,5 +54,6 @@ export type Presentation = {
     active_slide_index: number,
     selected_elements: Array<string>,
     data: Slide[],
+    last_selected_text_id: string,
     currentTool: TOOLS | null;
 }

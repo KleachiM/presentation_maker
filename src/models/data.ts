@@ -15,5 +15,6 @@ export const pres: Presentation = {
 			slide_data: []
 		},
 	],
+	last_selected_text_id: '',
 	currentTool: null,
 };
