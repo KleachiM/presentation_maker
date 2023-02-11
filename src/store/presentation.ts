@@ -98,6 +98,7 @@ const presentation = createSlice({
 		deleteActiveSlide: (state) => {
 			if (state.data.length > 1) {
 				state.data.splice(state.active_slide_index, 1);
+				state.active_slide_index = state.active_slide_index === 0 ? 0 : state.active_slide_index - 1;
 				state.active_slide = state.data[state.active_slide_index].id;
 			} else {
 				state.data[0].slide_data = [];

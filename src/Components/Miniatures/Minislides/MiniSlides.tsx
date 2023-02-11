@@ -30,7 +30,6 @@ export function MiniSlides(props: SlidesProps) {
 const mapDispathToProps = {setActiveSlide: presentationActions.setActiveSlide};
 
 const mapStateToProps = (state: AppState) => {
-//	console.log(state);
 	return {
 		slides: state.presentation.data,
 		activeSlideId: state.presentation.active_slide
