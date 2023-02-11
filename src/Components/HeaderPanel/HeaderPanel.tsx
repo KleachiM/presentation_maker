@@ -32,7 +32,7 @@ export function HeaderPanel() {
 			store.dispatch(presentationActions.addFig({element: createCircle('black')}));
 		}
 		if (type === TOOLS.ADD_TEXT) {
-			store.dispatch(presentationActions.addFig({element: addText('Введите свой текст')}));
+			store.dispatch(presentationActions.addFig({element: addText('')}));
 		}
 		if (type === TOOLS.PREVIEW) {
 			store.dispatch(presentationActions.setDisplayMode('preview'));
