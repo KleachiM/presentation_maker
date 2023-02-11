@@ -35,7 +35,7 @@ export function useDragAndDropElement(props: DNDElemProps) {
         console.log(event);
 		const payload = event.shiftKey
 			? [...store.getState().presentation.selected_elements, elemId]
-			: [elemId]
+			: [elemId];
 		store.dispatch(presentationActions.setSelectedElements(payload));
 		document.addEventListener('mousemove', mouseMoveHandl);
 		document.addEventListener('mouseup', mouseUpHandl);

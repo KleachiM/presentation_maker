@@ -20,5 +20,16 @@ export function useDocumentKeyHandler() {
 		document.addEventListener('keydown', onKeyDownHandler);
 		return () => document.removeEventListener('keydown', onKeyDownHandler);
 	}, [store.getState().presentation.display_mode]);
+}
 
+export function useExitFullScreenHandler () {
+	useEffect(() => {
+		const onFullScreenHandl = (event: Event) => {
+			if (!document.fullscreenElement) {
+				store.dispatch(presentationActions.setDisplayMode('presentation'));
+			}
+		};
+		document.addEventListener('fullscreenchange', onFullScreenHandl);
+		return () => document.removeEventListener('fullscreenchange', onFullScreenHandl);
+	});
 }

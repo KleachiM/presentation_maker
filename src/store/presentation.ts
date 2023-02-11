@@ -73,7 +73,7 @@ const presentation = createSlice({
 			const active_elem_index = state.data[state.active_slide_index].slide_data.map(i => i.id).indexOf(state.selected_elements[0]);
 			const slide_data = state.data[state.active_slide_index].slide_data;
 			const slide_data_len = slide_data.length;
-			if (slide_data.length > 0 && active_elem_index < slide_data_len) {
+			if (slide_data.length > 0 && active_elem_index < slide_data_len - 1) {
 				[slide_data[active_elem_index], slide_data[active_elem_index + 1]] = [slide_data[active_elem_index + 1], slide_data[active_elem_index]];
 			}
 		},

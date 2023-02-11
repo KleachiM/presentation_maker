@@ -29,9 +29,9 @@ export function MainSlide(props: MainSlideProps) {
 	useMouseDownDocumentHandler({elem_ref: mainSlideSvgRef});
 	return <div className="mainSlide">
 		<svg xmlns="http://www.w3.org/2000/svg" version="1.1"
-			 x="0" y="0" width="100%" height="100%"
-			 ref={mainSlideSvgRef}
-			 style={{backgroundColor:mainSlide.background}}
+			x="0" y="0" width="100%" height="100%"
+			ref={mainSlideSvgRef}
+			style={{backgroundColor:mainSlide.background}}
 		>
 			{slideSvgElements}
 		</svg>
