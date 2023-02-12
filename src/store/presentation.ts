@@ -133,6 +133,13 @@ const presentation = createSlice({
 				}, 'text');
 			}
 		},
+		setFontFamily: (state, action: PayloadAction<string>) => {
+			if (state.selected_elements.length) {
+				walkOnSlideElements<TextElem>(state, (el) => {
+					el.font_family = action.payload;
+				}, 'text');
+			}
+		},
 		upFontSize: (state) => {
 			if (state.selected_elements.length) {
 				walkOnSlideElements<TextElem>(state, (el) => {

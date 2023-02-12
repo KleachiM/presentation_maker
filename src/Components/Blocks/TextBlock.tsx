@@ -43,6 +43,7 @@ export function TextBlock(props: TextElemProps) {
 					width: props.textElem.width,
 					height: props.textElem.height,
 					color: props.textElem.font_color,
+					fontFamily: props.textElem.font_family,
 					fontSize: props.textElem.font_size / scale,
 					backgroundColor: 'transparent',
 					fontStyle: props.textElem.font_style,

@@ -1,5 +1,5 @@
 import './HeaderPanel.css';
-import React, {useState} from 'react';
+import React, {ChangeEvent, useState} from 'react';
 import PresentationName from './PresentationName/PresentationName';
 import {AppState, store} from '../../store';
 import {presentationActions} from '../../store/presentation';
@@ -67,6 +67,14 @@ export function HeaderPanel() {
 			</span>
 			{isActiveTextTool && (
 				<div className="text-edit-panel buttons-panel">
+					<select onChange={(ev: React.ChangeEvent<HTMLSelectElement>) => {
+						store.dispatch(presentationActions.setFontFamily(ev.target.value));
+					}}>
+						<option value='roboto'>Roboto</option>
+						<option value='montserrat'>Montserrat</option>
+						<option value='opensans'>OpenSans</option>
+						<option value='zeyada'>Zeyada</option>
+					</select>
 					<input
 						className="font-size-input"
 						type="number"

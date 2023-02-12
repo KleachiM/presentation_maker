@@ -19,7 +19,7 @@ export function useDocumentKeyHandler() {
 		};
 		document.addEventListener('keydown', onKeyDownHandler);
 		return () => document.removeEventListener('keydown', onKeyDownHandler);
-	}, [store.getState().presentation.display_mode]);
+	});
 }
 
 export function useExitFullScreenHandler () {
