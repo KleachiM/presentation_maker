@@ -66,7 +66,7 @@ const presentation = createSlice({
 		},
 		addSlide: (state, action: PayloadAction<{ element: Slide }>) => {
 			state.data.push(action.payload.element);
-			state.active_slide_index++;
+			state.active_slide_index = state.data.length-1;
 			state.active_slide = state.data[state.active_slide_index].id;
 		},
 		zIndexUp: (state, action: PayloadAction) => {
