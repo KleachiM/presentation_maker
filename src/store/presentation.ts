@@ -3,6 +3,7 @@ import {Point, Presentation, Slide, SlideElement, TextElem} from '../models/type
 import {pres} from '../models/data';
 import {walkOnSlideElements} from '../utils/utils';
 import {TOOLS} from '../const/tools';
+import {store} from './index';
 
 const initialState: Presentation = pres;
 
@@ -94,6 +95,50 @@ const presentation = createSlice({
 			if (action.payload === 'presentation') {
 				state.display_mode = 'presentation';
 			}
+		},
+		savePresentationToJson: (state, action: PayloadAction<string>) => {
+			const presentationName = state.title + '.json';
+			const newVariable: any = window.navigator;
+			const presentationFile = new Blob([JSON.stringify(state)], {type: 'json'});
+			if (newVariable && newVariable.msSaveOrOpenBlob) {
+				newVariable.msSaveOrOpenBlob(presentationFile, presentationName);
+			} else {
+				const a = document.createElement('a'),
+					url = URL.createObjectURL(presentationFile);
+				a.href = url;
+				a.download = presentationName;
+				document.body.appendChild(a);
+				a.click();
+				setTimeout(function () {
+					document.body.removeChild(a);
+					window.URL.revokeObjectURL(url);
+					}, 0);
+			}
+		},
+		UploadPresentationFromJson: (state, action: PayloadAction<string>) => {
+			const input = document.createElement('input');
+			input.type = 'file';
+			input.id = 'inputFile';
+			document.body.appendChild(input);
+			input.onchange = function () {
+				const files = input.files as FileList;
+				const f: File = files[0] as File;
+				const reader = new FileReader();
+				reader.onload = function(e) {
+					const target: any = e.target;
+					const presentationData: Presentation = JSON.parse(target.result) as Presentation;
+					store.dispatch(presentationActions.setTitle(presentationData.title));
+					store.dispatch(presentationActions.setData(presentationData.data));
+				};
+				reader.onerror = function (e) {
+					alert('Error loading');
+				};
+				reader.readAsText(f);
+			};
+			input.click();
+			setTimeout(function () {
+				document.body.removeChild(input);
+			}, 0);
 		},
 		deleteActiveSlide: (state) => {
 			if (state.data.length > 1) {

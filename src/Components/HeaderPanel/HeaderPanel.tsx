@@ -37,6 +37,12 @@ export function HeaderPanel() {
 		if (type === TOOLS.PREVIEW) {
 			store.dispatch(presentationActions.setDisplayMode('preview'));
 		}
+		if (type === TOOLS.SAVE) {
+			store.dispatch(presentationActions.savePresentationToJson(''));
+		}
+		if (type === TOOLS.UPLOAD) {
+			store.dispatch(presentationActions.UploadPresentationFromJson(''));
+		}
 	};
 
 	const isActiveTextTool = currentTool === TOOLS.ADD_TEXT;
