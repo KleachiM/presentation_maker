@@ -4,6 +4,8 @@ import {pres} from '../models/data';
 import {walkOnSlideElements} from '../utils/utils';
 import {TOOLS} from '../const/tools';
 import {store} from './index';
+import SlidesToPdf from '../Components/SlidesToPdf';
+import React from 'react';
 
 const initialState: Presentation = pres;
 
@@ -240,6 +242,9 @@ const presentation = createSlice({
 				}
 			});
 		},
+		saveToPDF: (state, action:PayloadAction<string>) => {
+			<SlidesToPdf />;
+		}
 	}
 });
 

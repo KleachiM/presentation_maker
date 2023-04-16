@@ -1,5 +1,5 @@
 import './HeaderPanel.css';
-import React, {ChangeEvent, useState} from 'react';
+import React from 'react';
 import PresentationName from './PresentationName/PresentationName';
 import {AppState, store} from '../../store';
 import {presentationActions} from '../../store/presentation';
@@ -42,6 +42,10 @@ export function HeaderPanel() {
 		}
 		if (type === TOOLS.UPLOAD) {
 			store.dispatch(presentationActions.UploadPresentationFromJson(''));
+		}
+		if (type === TOOLS.DO_PDF)
+		{
+			store.dispatch(presentationActions.saveToPDF(''));
 		}
 	};
 
