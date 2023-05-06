@@ -4,8 +4,9 @@ import {pres} from '../models/data';
 import {walkOnSlideElements} from '../utils/utils';
 import {TOOLS} from '../const/tools';
 import {store} from './index';
-import SlidesToPdf from '../Components/SlidesToPdf';
 import React from 'react';
+import { jsPDF } from 'jspdf';
+import 'svg2pdf.js';
 
 const initialState: Presentation = pres;
 
@@ -243,7 +244,14 @@ const presentation = createSlice({
 			});
 		},
 		saveToPDF: (state, action:PayloadAction<string>) => {
-			<SlidesToPdf />;
+			const doc = new jsPDF();
+			const elements = document.querySelectorAll('[xmlns]');
+			doc.svg(elements[0], {    x:1,
+				y:1,
+				width: 1920,
+				height: 1080}).then(() => {
+					doc.save('project.pdf');
+				});
 		}
 	}
 });
