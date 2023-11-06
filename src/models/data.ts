@@ -1,6 +1,8 @@
 import {Presentation} from './types';
 
 export const pres: Presentation = {
+	timeline: [],
+	timelinePosition: 0,
 	title: 'Presentation',
 	display_mode: 'presentation',
 	active_slide: 'slide0',

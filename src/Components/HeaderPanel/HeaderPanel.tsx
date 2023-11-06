@@ -47,6 +47,14 @@ export function HeaderPanel() {
 		{
 			store.dispatch(presentationActions.saveToPDF(''));
 		}
+		if (type === TOOLS.UNDO)
+		{
+			store.dispatch(presentationActions.undo(''));
+		}
+		if (type === TOOLS.REDO)
+		{
+			store.dispatch(presentationActions.redo(''));
+		}
 	};
 
 	const isActiveTextTool = currentTool === TOOLS.ADD_TEXT;

@@ -49,6 +49,8 @@ export type Slide = {
 }
 
 export type Presentation = {
+    timeline: Omit<Presentation, 'timeline' | 'timelinePosition'>[];
+    timelinePosition: number,
     title: string,
     display_mode: string,
     active_slide: string,

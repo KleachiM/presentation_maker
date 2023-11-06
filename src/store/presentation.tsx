@@ -1,9 +1,9 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 import {Point, Presentation, Slide, SlideElement, TextElem} from '../models/types';
 import {pres} from '../models/data';
-import {walkOnSlideElements} from '../utils/utils';
+import {deepClone, walkOnSlideElements} from '../utils/utils';
 import {TOOLS} from '../const/tools';
-import {store} from './index';
+import {AppState, store} from './index';
 import React from 'react';
 import {jsPDF} from 'jspdf';
 import 'svg2pdf.js';
@@ -16,7 +16,6 @@ const presentation = createSlice({
     initialState,
     reducers: {
         setTitle: (state, action: PayloadAction<string>) => ({...state, title: action.payload}),
-        // setDisplayMode: (state, action: PayloadAction<string>) => ({...state, display_mode: action.payload}),
         setActiveSlide: (state, action: PayloadAction<string>) => ({...state, active_slide: action.payload}),
         setActiveSlideUp: (state) => {
             if (state.data.length !== 1 && state.active_slide_index !== 0) {
@@ -64,15 +63,18 @@ const presentation = createSlice({
             const editedItem = editedSlide.slide_data.find((i) => i.id === action.payload.elemId);
             editedItem!.width = action.payload.newWidth;
             editedItem!.height = action.payload.newHeight;
+            saveUndo(state);
         },
         addFig: (state, action: PayloadAction<{ element: SlideElement }>) => {
             state.data[state.active_slide_index].slide_data.push(action.payload.element);
             state.selected_elements = [action.payload.element.id];
+            saveUndo(state);
         },
         addSlide: (state, action: PayloadAction<{ element: Slide }>) => {
             state.data.push(action.payload.element);
             state.active_slide_index = state.data.length - 1;
             state.active_slide = state.data[state.active_slide_index].id;
+            saveUndo(state);
         },
         zIndexUp: (state, action: PayloadAction) => {
             const active_elem_index = state.data[state.active_slide_index].slide_data.map(i => i.id).indexOf(state.selected_elements[0]);
@@ -152,11 +154,13 @@ const presentation = createSlice({
             } else {
                 state.data[0].slide_data = [];
             }
+            saveUndo(state);
         },
         deleteSelectedElements: (state) => {
             state.selected_elements.forEach((element) => {
                 state.data[state.active_slide_index].slide_data = state.data[state.active_slide_index].slide_data.filter(item => item.id !== element);
             });
+            saveUndo(state);
         },
         setColor: (state, action: PayloadAction<string>) => {
             const currentSlide = state.data[state.active_slide_index];
@@ -174,6 +178,7 @@ const presentation = createSlice({
             } else {
                 currentSlide.background = action.payload;
             }
+            saveUndo(state);
         },
         setFontSize: (state, action: PayloadAction<number>) => {
             if (state.selected_elements.length) {
@@ -181,6 +186,7 @@ const presentation = createSlice({
                     el.font_size = action.payload;
                 }, 'text');
             }
+            saveUndo(state);
         },
         setFontFamily: (state, action: PayloadAction<string>) => {
             if (state.selected_elements.length) {
@@ -188,6 +194,7 @@ const presentation = createSlice({
                     el.font_family = action.payload;
                 }, 'text');
             }
+            saveUndo(state);
         },
         upFontSize: (state) => {
             if (state.selected_elements.length) {
@@ -195,6 +202,7 @@ const presentation = createSlice({
                     el.font_size = parseInt(String(el.font_size)) + 1;
                 }, 'text');
             }
+            saveUndo(state);
         },
         downFontSize: (state) => {
             if (state.selected_elements.length) {
@@ -202,6 +210,7 @@ const presentation = createSlice({
                     el.font_size = parseInt(String(el.font_size)) - 1;
                 }, 'text');
             }
+            saveUndo(state);
         },
         toggleItalic: (state, action: PayloadAction) => {
             if (state.selected_elements.length) {
@@ -212,6 +221,7 @@ const presentation = createSlice({
                     }
                 });
             }
+            saveUndo(state);
         },
         toggleBold: (state, action: PayloadAction) => {
             if (state.selected_elements.length) {
@@ -222,6 +232,7 @@ const presentation = createSlice({
                     }
                 });
             }
+            saveUndo(state);
         },
         toggleUnderlined: (state, action: PayloadAction) => {
             if (state.selected_elements.length) {
@@ -232,6 +243,7 @@ const presentation = createSlice({
                     }
                 });
             }
+            saveUndo(state);
         },
         setCurrentTool: (state, action: PayloadAction<TOOLS>) => {
             state.currentTool = action.payload;
@@ -243,6 +255,7 @@ const presentation = createSlice({
                     s.text_value = action.payload;
                 }
             });
+            saveUndo(state);
         },
         saveToPDF: (state, action: PayloadAction<string>) => {
             const presentationName = state.title + '.pdf';
@@ -263,9 +276,54 @@ const presentation = createSlice({
             addElements(elements).then(() => {
                 doc.save(presentationName);
             });
-        }
+        },
+        undo: (state, action: PayloadAction<string>) => {
+            if (state.timelinePosition === 0) {
+                state.active_slide_index = initialState.active_slide_index;
+                state.selected_elements = initialState.selected_elements;
+                state.data = initialState.data;
+                state.title = initialState.title;
+            } else {
+                const nextTimeline = state.timelinePosition - 1;
+                const targetTimeline = nextTimeline > 0 ? nextTimeline : 0;
+                const revertState = state.timeline[targetTimeline];
+                state.timelinePosition = targetTimeline;
+                state.title = revertState.title;
+                state.active_slide_index = revertState.active_slide_index;
+                state.selected_elements = revertState.selected_elements;
+                state.data = revertState.data;
+            }
+        },
+        redo: (state, action: PayloadAction<string>) => {
+                const nextTimeline = state.timelinePosition + 1;
+            if (state.timeline.length != nextTimeline) {
+                const jumpState = state.timeline[nextTimeline];
+                state.timelinePosition = nextTimeline;
+                state.title = jumpState.title;
+                state.active_slide_index = jumpState.active_slide_index;
+                state.selected_elements = jumpState.selected_elements;
+                state.data = jumpState.data;
+            }
+        },
+
     }
 });
 
 export const presentationReducer = presentation.reducer;
 export const presentationActions = presentation.actions;
+
+function getSnapshot(state: AppState['presentation']) {
+    const { timeline, timelinePosition, ...stateData } = state;
+    return stateData;
+}
+
+function saveUndo(state: AppState['presentation']) {
+    if (state.timelinePosition != state.timeline.length - 1 && state.timeline.length) {
+        state.timeline.splice(state.timelinePosition);
+        state.timelinePosition = state.timeline.length ? state.timeline.length - 1 : 0;
+    } else {
+        const snap = getSnapshot(state);
+        state.timeline.push(snap);
+        state.timelinePosition = state.timeline.length ? state.timeline.length - 1 : 0;
+    }
+}
