@@ -50,6 +50,7 @@ const presentation = createSlice({
             const editedSlide = state.data[editedSlideIndex];
             const editedItem = editedSlide.slide_data.find((i) => i.id === action.payload.elemId);
             editedItem!.position = action.payload.newPos;
+            saveUndo(state);
         },
 
         setElementSize: (state, action: PayloadAction<{
@@ -83,6 +84,7 @@ const presentation = createSlice({
             if (slide_data.length > 0 && active_elem_index < slide_data_len - 1) {
                 [slide_data[active_elem_index], slide_data[active_elem_index + 1]] = [slide_data[active_elem_index + 1], slide_data[active_elem_index]];
             }
+            saveUndo(state);
         },
         zIndexDown: (state) => {
             const active_elem_index = state.data[state.active_slide_index].slide_data.map(i => i.id).indexOf(state.selected_elements[0]);
@@ -90,6 +92,7 @@ const presentation = createSlice({
             if (slide_data.length > 0 && active_elem_index > 0) {
                 [slide_data[active_elem_index - 1], slide_data[active_elem_index]] = [slide_data[active_elem_index], slide_data[active_elem_index - 1]];
             }
+            saveUndo(state);
         },
         setDisplayMode: (state, action: PayloadAction<string>) => {
             if (action.payload === 'preview' && state.display_mode !== 'preview') {
