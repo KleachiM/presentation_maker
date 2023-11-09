@@ -15,7 +15,10 @@ const presentation = createSlice({
     name: 'presentation',
     initialState,
     reducers: {
-        setTitle: (state, action: PayloadAction<string>) => ({...state, title: action.payload}),
+        setTitle: (state, action: PayloadAction<string>) => {
+            state.title = action.payload;
+            saveUndo(state);
+        },
         setActiveSlide: (state, action: PayloadAction<string>) => ({...state, active_slide: action.payload}),
         setActiveSlideUp: (state) => {
             if (state.data.length !== 1 && state.active_slide_index !== 0) {
@@ -136,6 +139,8 @@ const presentation = createSlice({
                 reader.onload = function (e) {
                     const target: any = e.target;
                     const presentationData: Presentation = JSON.parse(target.result) as Presentation;
+                    const titleInput = document.getElementById('title') as HTMLInputElement;
+                    titleInput.value = presentationData.title;
                     store.dispatch(presentationActions.setTitle(presentationData.title));
                     store.dispatch(presentationActions.setData(presentationData.data));
                 };
@@ -264,51 +269,66 @@ const presentation = createSlice({
             const presentationName = state.title + '.pdf';
             const doc = new jsPDF();
             const elements = document.querySelectorAll('[xmlns]');
+
             async function addElements(element: NodeListOf<Element>, options?: Svg2pdfOptions) {
-                for (let index = 0; index < elements.length - 1 ; index++) {
+                for (let index = 0; index < elements.length - 1; index++) {
                     if (index > 0) {
                         doc.addPage();
                     }
-                    await doc.svg(elements[index], {    x:1,
-                        y:1,
+                    await doc.svg(elements[index], {
+                        x: 1,
+                        y: 1,
                         width: 1920,
-                        height: 1080});
+                        height: 1080
+                    });
                     await new Promise(resolve => setTimeout(resolve, 100)); // задержка в 100 мс
                 }
             }
+
             addElements(elements).then(() => {
                 doc.save(presentationName);
             });
         },
         undo: (state, action: PayloadAction<string>) => {
+            console.log(state.timelinePosition);
             if (state.timelinePosition === 0) {
+                state.active_slide = initialState.active_slide;
                 state.active_slide_index = initialState.active_slide_index;
                 state.selected_elements = initialState.selected_elements;
                 state.data = initialState.data;
                 state.title = initialState.title;
+                state.last_selected_text_id = initialState.last_selected_text_id;
             } else {
                 const nextTimeline = state.timelinePosition - 1;
                 const targetTimeline = nextTimeline > 0 ? nextTimeline : 0;
                 const revertState = state.timeline[targetTimeline];
                 state.timelinePosition = targetTimeline;
                 state.title = revertState.title;
+                state.active_slide = revertState.active_slide;
                 state.active_slide_index = revertState.active_slide_index;
                 state.selected_elements = revertState.selected_elements;
                 state.data = revertState.data;
+                state.last_selected_text_id = revertState.last_selected_text_id;
             }
-        },
+            const titleInput = document.getElementById('title') as HTMLInputElement;
+            titleInput.value = state.title;
+         },
         redo: (state, action: PayloadAction<string>) => {
-                const nextTimeline = state.timelinePosition + 1;
-            if (state.timeline.length != nextTimeline) {
+            const nextTimeline = state.timelinePosition + 1;
+            console.log(nextTimeline);
+            if (state.timeline.length > nextTimeline) {
                 const jumpState = state.timeline[nextTimeline];
                 state.timelinePosition = nextTimeline;
                 state.title = jumpState.title;
+                state.active_slide = jumpState.active_slide;
                 state.active_slide_index = jumpState.active_slide_index;
                 state.selected_elements = jumpState.selected_elements;
                 state.data = jumpState.data;
+                state.last_selected_text_id = jumpState.last_selected_text_id;
+                const titleInput = document.getElementById('title') as HTMLInputElement;
+                titleInput.value = state.title;
             }
         },
-
     }
 });
 
@@ -316,7 +336,7 @@ export const presentationReducer = presentation.reducer;
 export const presentationActions = presentation.actions;
 
 function getSnapshot(state: AppState['presentation']) {
-    const { timeline, timelinePosition, ...stateData } = state;
+    const {timeline, timelinePosition, ...stateData} = state;
     return stateData;
 }
 

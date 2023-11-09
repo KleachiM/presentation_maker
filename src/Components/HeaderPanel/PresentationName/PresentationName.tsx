@@ -9,7 +9,7 @@ type PresentationNameProps = {
 }
 function PresentationName(props: PresentationNameProps) {
 	return <>
-		<input type="text" className="title" defaultValue={props.title}
+		<input type="text" className="title" id="title" defaultValue={props.title}
 			onKeyPress = {
 				(e) => {
 					if (e.key === 'Enter') {
